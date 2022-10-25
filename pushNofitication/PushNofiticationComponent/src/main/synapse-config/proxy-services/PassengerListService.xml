@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="PassengerListService" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full"/>
+            <log level="custom">
+                <property name="switchlog" value="Entering PassengerListService"/>
+            </log>
+            <log level="custom">
+                <property expression="json-eval($.marketingCarrier)" name="marketingCarrier"/>
+                <property expression="json-eval($.flightNumber)" name="flightNumber"/>
+                <property expression="json-eval($.departureDate)" name="departureDate"/>
+                <property expression="json-eval($.boardPoint)" name="boardPoint"/>
+                <property expression="json-eval($.offPoint)" name="offPoint"/>
+                <property expression="json-eval($.sessionId)" name="sessionId"/>
+                <property expression="json-eval($.sequenceNumber)" name="sequenceNumber"/>
+                <property expression="json-eval($.securityToken)" name="securityToken"/>
+            </log>
+            <property name="mqAmadeusUserName" scope="default" type="STRING" value="WS4ZMTP"/>
+            <property expression="json-eval($.marketingCarrier)" name="marketingCarrier" scope="default" type="STRING"/>
+            <property expression="json-eval($.flightNumber)" name="flightNumber" scope="default" type="STRING"/>
+            <property expression="json-eval($.departureDate)" name="departureDate" scope="default" type="STRING"/>
+            <property expression="json-eval($.boardPoint)" name="boardPoint" scope="default" type="STRING"/>
+            <property expression="json-eval($.offPoint)" name="offPoint" scope="default" type="STRING"/>
+            <sequence key="DCSCredentialsSequence"/>
+            <!-- <property name="passengerListTsnStatusCode" scope="default" type="STRING" 
+				value="Start"/> -->
+            <sequence key="PassengerListSequence"/>
+            <payloadFactory media-type="json">
+                <format>
+					{ "amadeusDCSPaxListResponse": {
+					"resultCode": "200",
+					"resultMessage": "Success",
+					"sessionId" : "$1",
+					"sequenceNumber" : "$2",
+					"securityToken" : "$3",
+					"paxListReponse": $4
+					}
+					}
+				</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:sessionId"/>
+                    <arg evaluator="xml" expression="$ctx:sequenceNumber"/>
+                    <arg evaluator="xml" expression="$ctx:securityToken"/>
+                    <arg evaluator="xml" expression="$ctx:paxListReponse"/>
+                </args>
+            </payloadFactory>
+            <log level="full"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <log level="custom">
+                <property name="switchlog" value="Error while invoking the Pax List Service"/>
+            </log>
+            <sequence key="PaxListAmadeusFaultSequence"/>
+        </faultSequence>
+    </target>
+</proxy>

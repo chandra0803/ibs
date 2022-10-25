@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="RetrievePNRContactSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="custom">
+        <property name="switchlog" value="Entering Retrieve PNR Que sequence"/>
+        <property expression="get-property('MessageID')" name="ESBMessageID"/>
+    </log>
+    <class name="com.ibsplc.pushNotification.mediators.AmadeusContactRetrieveRequestMediator"/>
+    <log level="custom">
+        <property expression="get-property('createdDate')" name="createdDate"/>
+    </log>
+    <payloadFactory media-type="xml">
+        <format>
+            <soapenv:Envelope xmlns:app="http://xml.amadeus.com/2010/06/AppMdw_CommonTypes_v3" xmlns:iat="http://www.iata.org/IATA/2007/00/IATA2010.1" xmlns:link="http://wsdl.amadeus.com/2010/06/ws/Link_v1" xmlns:pnr="http://xml.amadeus.com/PNRRET_17_1_1A" xmlns:sec="http://xml.amadeus.com/2010/06/Security_v1" xmlns:ses="http://xml.amadeus.com/2010/06/Session_v3" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://xml.amadeus.com/2010/06/Types_v1">
+                <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+                    <ses:Session TransactionStatusCode="Start"/>
+                    <sec:AMA_SecurityHostedUser>
+                        <sec:UserID AgentDutyCode="SU" POS_Type="1" PseudoCityCode="JNB4Z08AA" RequestorType="U">
+                            <typ:RequestorID>
+                                <iat:CompanyName>4Z</iat:CompanyName>
+                            </typ:RequestorID>
+                        </sec:UserID>
+                    </sec:AMA_SecurityHostedUser>
+                    <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+                        <wsse:UsernameToken>
+                            <wsse:Username>$1</wsse:Username>
+                            <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">$2</wsse:Password>
+                            <wsse:Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">$3</wsse:Nonce>
+                            <wsu:Created>$4</wsu:Created>
+                        </wsse:UsernameToken>
+                    </wsse:Security>
+                </soapenv:Header>
+                <soapenv:Body>
+                    <pnr:PNR_Retrieve xmlns="http://xml.amadeus.com/PNRRET_17_1_1A">
+                        <pnr:retrievalFacts>
+                            <pnr:retrieve>
+                                <pnr:type>2</pnr:type>
+                            </pnr:retrieve>
+                            <pnr:reservationOrProfileIdentifier>
+                                <pnr:reservation>
+                                    <pnr:controlNumber>$5</pnr:controlNumber>
+                                </pnr:reservation>
+                            </pnr:reservationOrProfileIdentifier>
+                        </pnr:retrievalFacts>
+                    </pnr:PNR_Retrieve>
+                </soapenv:Body>
+            </soapenv:Envelope>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('amadeusQueUserName')"/>
+            <arg evaluator="xml" expression="get-property('password')"/>
+            <arg evaluator="xml" expression="get-property('nonce')"/>
+            <arg evaluator="xml" expression="get-property('createdDate')"/>
+            <arg evaluator="xml" expression="get-property('pnrNumber')"/>
+        </args>
+    </payloadFactory>
+    <property name="messageType" scope="axis2" type="STRING" value="text/xml"/>
+    <header name="wsa:Action" scope="default" value="http://webservices.amadeus.com/PNRRET_17_1_1A" xmlns:wsa="http://www.w3.org/2005/08/addressing"/>
+    <header expression="get-property('MessageID')" name="wsa:MessageID" scope="default" xmlns:wsa="http://www.w3.org/2005/08/addressing"/>
+    <header expression="get-property('amadeusQueEndPoint')" name="wsa:To" scope="default" xmlns:wsa="http://www.w3.org/2005/08/addressing"/>
+    <header name="Action" scope="default" value="http://webservices.amadeus.com/PNRRET_17_1_1A"/>
+    <property name="HTTP_METHOD" scope="axis2" type="STRING" value="POST"/>
+    <property name="PRESERVE_WS_ADDRESSING" scope="default" type="STRING" value="true"/>
+    <property name="preserveProcessedHeaders" scope="default" type="STRING" value="true"/>
+    <header expression="get-property('amadeusQueEndPoint')" name="To" scope="default"/>
+    <log level="full"/>
+    <call>
+        <endpoint>
+            <default format="soap11">
+                <timeout>
+                    <duration>60000</duration>
+                    <responseAction>fault</responseAction>
+                </timeout>
+                <suspendOnFailure>
+                    <initialDuration>2000</initialDuration>
+                    <progressionFactor>1.0</progressionFactor>
+                    <maximumDuration>3000</maximumDuration>
+                </suspendOnFailure>
+            </default>
+        </endpoint>
+    </call>
+    <log level="full"/>
+    <property expression="$header/awsse:Session/awsse:SessionId/text()" name="sessionId" scope="default" type="STRING" xmlns:awsse="http://xml.amadeus.com/2010/06/Session_v3"/>
+    <property expression="$header/awsse:Session/awsse:SequenceNumber/text()" name="sequenceNumber" scope="default" type="STRING" xmlns:awsse="http://xml.amadeus.com/2010/06/Session_v3"/>
+    <property expression="$header/awsse:Session/awsse:SecurityToken/text()" name="securityToken" scope="default" type="STRING" xmlns:awsse="http://xml.amadeus.com/2010/06/Session_v3"/>
+    <filter regex="200" source="get-property('axis2', 'HTTP_SC')">
+        <then>
+            <log level="custom">
+                <property name="switchlog" value="Amadeus Retrieve PNR service is successful"/>
+            </log>
+        </then>
+        <else>
+            <property expression="$body/soap:Fault/faultstring/text()" name="faultString" scope="default" type="STRING" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"/>
+            <log level="custom">
+                <property name="switchlog" value="Error while invoking the Amadeus Retrieve PNR service"/>
+                <property expression="$body/soap:Fault/faultstring/text()" name="faultString" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"/>
+            </log>
+            <sequence key="PnrContactFaultSequence"/>
+        </else>
+    </filter>
+    <log level="custom">
+        <property expression="$header/awsse:Session/awsse:SessionId/text()" name="amadeusACSFRQSessionId" xmlns:awsse="http://xml.amadeus.com/2010/06/Session_v3"/>
+        <property expression="$header/awsse:Session/awsse:SequenceNumber/text()" name="amadeusACSFRQSequenceNumber" xmlns:awsse="http://xml.amadeus.com/2010/06/Session_v3"/>
+    </log>
+    <class name="com.ibsplc.pushNotification.mediators.PnrContactResponseMediator"/>
+    <filter regex="ERROR" source="get-property('PNRRetrieveStatus')">
+        <then>
+            <sequence key="PnrSecuritySignOut"/>
+            <payloadFactory media-type="json">
+                <format>
+					{ "amadeusPNRRetrieveResponse": {
+					"resultCode": "201",
+					1"resultMessage": "$1",
+					"sessionId"	: "$2",
+					"sequenceNumber" : "$3",
+					"securityToken" : "$4",
+					"pnrRetrieveDetails": null
+					}
+					}
+				</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:PNRRetrieveErrorMessage"/>
+                    <arg evaluator="xml" expression="$ctx:sessionId"/>
+                    <arg evaluator="xml" expression="$ctx:sequenceNumber"/>
+                    <arg evaluator="xml" expression="$ctx:securityToken"/>
+                </args>
+            </payloadFactory>
+            <log level="full"/>
+            <log level="custom">
+                <property name="switchlog" value="Exception while processing RetrievePNR"/>
+            </log>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </then>
+        <else>
+            <property name="switchlog" scope="default" type="STRING" value="RetrievePNR processed successfully"/>
+        </else>
+    </filter>
+</sequence>

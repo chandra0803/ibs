@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="RetrievePnrContactService" startOnLoad="true" transports="https http" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full"/>
+            <log level="custom">
+                <property name="switchlog" value="Entering RetrievePnrContact Service"/>
+            </log>
+            <log level="custom">
+                <property expression="json-eval($.pnrNumber)" name="pnrNumber"/>
+            </log>
+            <property expression="json-eval($.pnrNumber)" name="pnrNumber" scope="default" type="STRING"/>
+            <property name="amadeusQueUserName" scope="default" type="STRING" value="WS4ZSSW"/>
+            <property name="amadeusQuePassword" scope="default" type="STRING" value="A1rl1nk@1"/>
+            <property name="amadeusQueEndPoint" scope="default" type="STRING" value="https://nodeA3.test.webservices.amadeus.com/1ASIWRIA4Z"/>
+            <sequence key="PSSCredentialsSequence"/>
+            <!-- <property name="boardedTsnStatusCode" scope="default" type="STRING" 
+				value="End"/> <sequence key="CheckInSummaryFigures"/> -->
+            <sequence key="RetrievePNRContactSequence"/>
+            <payloadFactory media-type="json">
+                <format>
+					{ "amadeusPNRRetrieveResponse": {
+					"resultCode": "200",
+					"resultMessage": "Success",
+					"sessionId" : "$1",
+					"sequenceNumber" : "$2",
+					"securityToken" : "$3",
+					"pnrRetrieveDetails": $4
+					}
+					}
+				</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:sessionId"/>
+                    <arg evaluator="xml" expression="$ctx:sequenceNumber"/>
+                    <arg evaluator="xml" expression="$ctx:securityToken"/>
+                    <arg evaluator="xml" expression="$ctx:pnrRetrieveReponse"/>
+                </args>
+            </payloadFactory>
+            <log level="full"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <log level="custom">
+                <property name="switchlog" value="Error while invoking the PNRRetrieveService"/>
+            </log>
+            <sequence key="PnrContactFaultSequence"/>
+        </faultSequence>
+    </target>
+</proxy>

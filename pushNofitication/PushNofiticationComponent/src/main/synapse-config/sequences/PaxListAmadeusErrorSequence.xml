@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="PaxListAmadeusErrorSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="custom">
+        <property name="switchlog" value="Entering PaxListAmadeusErrorSequence"/>
+    </log>
+    <sequence key="SecuritySignOutForMq"/>
+    <property name="HTTP_SC" scope="axis2" type="STRING" value="200"/>
+    <payloadFactory media-type="json">
+        <format>
+			{ "amadeusDCSPaxListResponse": {
+			"resultCode": "500",
+			"resultMessage": "Error while invoking Amadeus Pax List service",
+			"sessionId" : "",
+			"sequenceNumber" :"",
+			"securityToken":"",
+			"paxListReponse": null
+			}
+			}
+		</format>
+        <args/>
+    </payloadFactory>
+    <log level="full"/>
+    <respond/>
+</sequence>

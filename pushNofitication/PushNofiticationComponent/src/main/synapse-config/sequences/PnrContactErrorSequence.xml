@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="PnrContactErrorSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="custom">
+        <property name="switchlog" value="Entering Contact PNR ErrorSequence"/>
+    </log>
+    <sequence key="PnrSecuritySignOut"/>
+    <property name="HTTP_SC" scope="axis2" type="STRING" value="200"/>
+    <payloadFactory media-type="json">
+        <format>
+			{ "amadeusPNRRetrieveResponse": {
+			"resultCode": "500",
+			"resultMessage": "Error while invoking Amadeus Contact PNR service",
+			"sessionId" : "",
+			"sequenceNumber" : "",
+			"securityToken" : "",
+			"pnrRetrieveDetails": null
+			}
+			}
+		</format>
+        <args/>
+    </payloadFactory>
+    <log level="full"/>
+    <respond/>
+</sequence>

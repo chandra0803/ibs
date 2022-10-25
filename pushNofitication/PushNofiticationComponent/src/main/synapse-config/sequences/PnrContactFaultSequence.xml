@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="PnrContactFaultSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="custom">
+        <property name="switchlog" value="Entering Amadeus Contact PNR faultSequence "/>
+    </log>
+    <property name="HTTP_SC" scope="axis2" type="STRING" value="200"/>
+    <payloadFactory media-type="json">
+        <format>
+			{ "amadeusPNRRetrieveResponse": {
+			"resultCode": "201",
+			"resultMessage" : "$1",
+			"sessionId" : "$2",
+			"sequenceNumber" : "$3",
+			"securityToken" : "$4",
+			"pnrRetrieveDetails": null
+			}
+			}
+		</format>
+        <args>
+            <arg evaluator="xml" expression="$ctx:faultString"/>
+            <arg evaluator="xml" expression="$ctx:sessionId"/>
+            <arg evaluator="xml" expression="$ctx:sequenceNumber"/>
+            <arg evaluator="xml" expression="$ctx:securityToken"/>
+        </args>
+    </payloadFactory>
+    <log level="full"/>
+    <log level="custom">
+        <property name="switchlog" value="Amadeus Contact PNR Fault Sequence response"/>
+    </log>
+    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <respond/>
+</sequence>

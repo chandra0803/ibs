@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="PassengerListService" groupId="com.example.PushNofiticationComponent.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/PassengerListService.xml</file>
+    </artifact>
+    <artifact name="PaxListAmadeusFaultSequence" groupId="com.example.PushNofiticationComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PaxListAmadeusFaultSequence.xml</file>
+    </artifact>
+    <artifact name="PassengerListSequence" groupId="com.example.PushNofiticationComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PassengerListSequence.xml</file>
+    </artifact>
+    <artifact name="SecuritySignOutForMq" groupId="com.example.PushNofiticationComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/SecuritySignOutForMq.xml</file>
+    </artifact>
+    <artifact name="PaxListAmadeusErrorSequence" groupId="com.example.PushNofiticationComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PaxListAmadeusErrorSequence.xml</file>
+    </artifact>
+    <artifact name="RetrievePnrContactService" groupId="com.example.PushNofiticationComponent.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/RetrievePnrContactService.xml</file>
+    </artifact>
+    <artifact name="DCSCredentialsSequence" groupId="com.example.PushNofiticationComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/DCSCredentialsSequence.xml</file>
+    </artifact>
+    <artifact name="PSSCredentialsSequence" groupId="com.example.PushNofiticationComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PSSCredentialsSequence.xml</file>
+    </artifact>
+    <artifact name="PnrContactFaultSequence" groupId="com.example.PushNofiticationComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PnrContactFaultSequence.xml</file>
+    </artifact>
+    <artifact name="PnrContactErrorSequence" groupId="com.example.PushNofiticationComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PnrContactErrorSequence.xml</file>
+    </artifact>
+    <artifact name="RetrievePNRContactSequence" groupId="com.example.PushNofiticationComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/RetrievePNRContactSequence.xml</file>
+    </artifact>
+    <artifact name="PnrSecuritySignOut" groupId="com.example.PushNofiticationComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PnrSecuritySignOut.xml</file>
+    </artifact>
+</artifacts>
