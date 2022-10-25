@@ -1,0 +1,13 @@
+server:
+  port: 8310
+
+spring:
+  application:
+    name: notificationhub
+  cloud:
+    kubernetes:
+      loadbalancer:
+        enabled: false
+      discovery:
+        enabled: false
+      enabled: false
