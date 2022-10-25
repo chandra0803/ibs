@@ -1,0 +1,5 @@
+com\ibsplc\jmx\JMXMonitoring\JmxTest.class
+com\ibsplc\controller\SpringBootWelcomePageConfiguration.class
+com\ibsplc\jmx\JMXMonitoring\JmxMonitoringApplication.class
+com\ibsplc\jmx\JMXMonitoring\ServletInitializer.class
+com\ibsplc\jmx\JMXMonitoring\JMXMonitoring.class
