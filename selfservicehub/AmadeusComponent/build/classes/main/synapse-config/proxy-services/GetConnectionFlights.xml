@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="GetConnectionFlights" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <property expression="json-eval($.originCriteria)" name="originCriteria" scope="default" type="STRING"/>
+            <property expression="json-eval($.destinationCriteria)" name="destinationCriteria" scope="default" type="STRING"/>
+            <property expression="json-eval($.requestDateEffectiveFrom)" name="requestDateEffectiveFrom" scope="default" type="STRING"/>
+            <property expression="json-eval($.requestDateEffectiveTo)" name="requestDateEffectiveTo" scope="default" type="STRING"/>
+            <property expression="json-eval($.carrier1Criteria)" name="carrier1Criteria" scope="default" type="STRING"/>
+            <property expression="json-eval($.via1Criteria)" name="via1Criteria" scope="default" type="STRING"/>
+            <property expression="json-eval($.carrier2Criteria)" name="carrier2Criteria" scope="default" type="STRING"/>
+            <property name="oagEndPoint" scope="default" type="STRING" value="http://ondemand.oag.com:80/CBWebServicePublic/CBWSPubliclPort"/>
+            <log level="custom">
+                <property expression="json-eval($.originCriteria)" name="originCriteria"/>
+                <property expression="json-eval($.destinationCriteria)" name="destinationCriteria"/>
+                <property expression="json-eval($.requestDateEffectiveFrom)" name="requestDateEffectiveFrom"/>
+                <property expression="json-eval($.requestDateEffectiveTo)" name="requestDateEffectiveTo"/>
+                <property expression="json-eval($.carrier1Criteria)" name="carrier1Criteria"/>
+                <property expression="json-eval($.via1Criteria)" name="via1Criteria"/>
+                <property expression="json-eval($.carrier2Criteria)" name="carrier2Criteria"/>
+            </log>
+            <sequence key="GetConnectionFlightsSequence"/>
+            <payloadFactory media-type="json">
+                <format>
+					{ "getConnectionFlightsResponse": {
+					"resultCode": "200",
+					"resultMessage": "Success",
+					"flightListDetails": $ctx:flightListResponse
+					}
+					}
+				</format>
+                <args/>
+            </payloadFactory>
+            <log level="full"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+</proxy>

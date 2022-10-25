@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="PNR_Retrieve" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="custom">
+                <property name="switchlog" value="Entering PNR_Retrieve service"/>
+            </log>
+            <property expression="json-eval($.pnrNumber)" name="pnrNumber" scope="default" type="STRING"/>
+            <property expression="json-eval($.surName)" name="surName" scope="default" type="STRING"/>
+            <!-- <property expression="get-property('registry', 'conf:/AirLink/amadeusUserName')" name="amadeusUserName" scope="default" type="STRING"/>
+            <property expression="get-property('registry', 'conf:/AirLink/amadeusPassword')" name="amadeusPassword" scope="default" type="STRING"/>
+            <property expression="get-property('registry', 'conf:/AirLink/amadeusEndPoint')" name="amadeusEndPoint" scope="default" type="STRING"/> -->
+            <property name="amadeusUserName" scope="default" type="STRING" value="WS4ZSSW"/>
+            <property name="amadeusPassword" scope="default" type="STRING" value="A1rl1nk@1"/>
+            <property name="amadeusEndPoint" scope="default" type="STRING" value="https://nodeA3.test.webservices.amadeus.com/1ASIWRIA4Z"/>
+            <log level="custom">
+                <property expression="json-eval($.pnrNumber)" name="pnrNumber"/>
+                <property expression="json-eval($.surName)" name="surName"/>
+                <property expression="get-property('conf:/AirLink/amadeusEndPoint')" name="amadeusEndPointUrl"/>
+                <property expression="get-property('registry', 'conf://AirLink/amadeusEndPoint')" name="amadeusEndPointUrlRegistry"/>
+                <property expression="get-property('registry', 'conf:/AirLink/amadeusEndPoint')" name="amadeusEndPointUrlRegistry1"/>
+                <property expression="get-property('amadeusEndPoint')" name="amadeusEndPointUrl1"/>
+                <property expression="get-property('conf:/AirLink/amadeusEndPoint')" name="amadeusEndPointUrl22"/>
+            </log>
+            <sequence key="PNRRetrieve"/>
+            <log level="custom">
+                <property expression="get-property('pnrRetrieveReponse')" name="pnrRetrieveReponse"/>
+            </log>
+            <sequence key="SecuritySignOut"/>
+            <payloadFactory media-type="json">
+                <format>
+					{ "amadeusResponse": {
+					"resultCode": "200",
+					"resultMessage": "Success",
+					"sessionId" : "$ctx:sessionId",
+					"sequenceNumber" : "$ctx:sequenceNumber",
+					"securityToken" : "$ctx:securityToken",
+					"pnrDetails": $ctx:pnrRetrieveReponse
+					}
+					}
+				</format>
+                <args/>
+            </payloadFactory>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <log level="custom">
+                <property name="switchlog" value="Error while invoking the PNR_Retrieve service"/>
+            </log>
+            <sequence key="AmadeusFaultSequence"/>
+        </faultSequence>
+    </target>
+</proxy>

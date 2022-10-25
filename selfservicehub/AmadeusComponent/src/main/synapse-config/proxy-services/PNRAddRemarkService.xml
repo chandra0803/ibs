@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="PNRAddRemarkService" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full"/>
+            <log level="custom">
+                <property name="switchlog" value="Entering PNRAddRemarkService service"/>
+            </log>
+            <property expression="json-eval($.pnrNumber)" name="pnrNumber" scope="default" type="STRING"/>
+            <property expression="json-eval($.remark)" name="pnrRemark" scope="default" type="STRING"/>
+            <property expression="json-eval($.sessionId)" name="sessionId" scope="default" type="STRING"/>
+            <property expression="json-eval($.sequenceNumber)" name="sequenceNumber" scope="default" type="STRING"/>
+            <property expression="json-eval($.securityToken)" name="securityToken" scope="default" type="STRING"/>
+            <sequence key="AmadeusCredentialsSequence"/>
+            <log level="custom">
+                <property expression="json-eval($.pnrNumber)" name="pnrNumber"/>
+                <property expression="json-eval($.remark)" name="pnrRemark"/>
+                <property expression="json-eval($.clientSessionId)" name="clientSessionId"/>
+                <property expression="json-eval($.sessionId)" name="amadeusSessionId"/>
+                <property expression="json-eval($.sequenceNumber)" name="amadeusSequenceNumber"/>
+            </log>
+            <sequence key="PNRAddMultiElements"/>
+            <payloadFactory media-type="json">
+                <format>
+					{ "amadeusResponse": {
+					"resultCode": "200",
+					"resultMessage": "Success",
+					"sessionId" : "$ctx:sessionId",
+					"sequenceNumber" : "$ctx:sequenceNumber",
+					"securityToken" : "$ctx:securityToken",
+					"pnrDetails": null
+					}
+					}
+				</format>
+                <args/>
+            </payloadFactory>
+            <log level="full"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <log level="custom">
+                <property name="switchlog" value="Error while invoking the PNRAddRemarkService service"/>
+            </log>
+            <sequence key="AmadeusFaultSequence"/>
+        </faultSequence>
+    </target>
+</proxy>

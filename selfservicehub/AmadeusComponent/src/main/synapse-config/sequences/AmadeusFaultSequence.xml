@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="AmadeusFaultSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="custom">
+        <property name="switchlog" value="Entering Amadeus Fault Seqeunce"/>
+    </log>
+    <property name="HTTP_SC" scope="axis2" type="STRING" value="200"/>
+    <payloadFactory media-type="json">
+        <format>
+					{ "amadeusResponse": {
+					"resultCode": "500",
+					"resultMessage": "Error while invoking Amadeus service",
+					"sessionId" : "",
+					"sequenceNumber" : "",
+					"securityToken" : "",
+					"pnrDetails": null
+					}
+					}
+				</format>
+        <args/>
+    </payloadFactory>
+    <log level="full"/>
+    <log level="custom">
+        <property name="switchlog" value="Amadeus Fault Seqeunce response"/>
+    </log>
+    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <respond/>
+</sequence>

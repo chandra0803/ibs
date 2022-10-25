@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="amadeusEndPoint" groupId="com.ibsplc.AmadeusComponentRegistry.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>amadeusEndPoint</file>
+            <path>/_system/config/Airlink</path>
+            <mediaType/>
+        </item>
+    </artifact>
+    <artifact name="amadeusPassword" groupId="com.ibsplc.AmadeusComponentRegistry.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>amadeusPassword</file>
+            <path>/_system/config/Airlink</path>
+            <mediaType/>
+        </item>
+    </artifact>
+    <artifact name="amadeusUserName" groupId="com.ibsplc.AmadeusComponentRegistry.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>amadeusUserName</file>
+            <path>/_system/config/Airlink</path>
+            <mediaType/>
+        </item>
+    </artifact>
+    </artifacts>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="GetConnectionFlightsSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="custom">
+        <property name="switchlog" value="Entering GetConnectionFlightsSequence Sequence"/>
+        <property expression="get-property('oagEndPoint')" name="oagEndPoint"/>
+    </log>
+    <payloadFactory media-type="xml">
+        <format>
+            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.connections.oag.com/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                    <ws:getConnections>
+                        <!--Optional:-->
+                        <arg0 xmlns="">
+                            <!--Optional:-->
+                            <carrier1Criteria>$5</carrier1Criteria>
+                            <!--Optional:-->
+                            <carrier2Criteria>$6</carrier2Criteria>
+                            <!--Optional:-->
+                            <destinationCriteria>$2</destinationCriteria>
+                            <!--Optional:-->
+                            <destinationCriteriaLocationType>A</destinationCriteriaLocationType>
+                            <!--Optional:-->
+                            <maxCT1>0400</maxCT1>
+                            <!--Optional:-->
+                            <maxCT2>0800</maxCT2>
+                            <!--Optional:-->
+                            <maxElapsedTime>3600</maxElapsedTime>
+                            <!--Optional:-->
+                            <originCriteria>$1</originCriteria>
+                            <!--Optional:-->
+                            <originCriteriaLocationType>A</originCriteriaLocationType>
+                            <!--Optional:-->
+                            <password>P@vs0@g2019</password>
+                            <!--Optional:-->
+                            <requestDate>$3</requestDate>
+                            <!--Optional:-->
+                            <requestDateEffectiveFrom>$3</requestDateEffectiveFrom>
+                            <!--Optional:-->
+                            <requestDateEffectiveTo>$4</requestDateEffectiveTo>
+                            <!--Optional:-->
+                            <requestTime>00:00:01</requestTime>
+                            <!--Optional:-->
+                            <rtnRequestDate>$4</rtnRequestDate>
+                            <!--Optional:-->
+                            <rtnRequestTime>23:59:00</rtnRequestTime>
+                            <!--Optional:-->
+                            <sortOrder>D</sortOrder>
+                            <!--Optional:-->
+                            <username>paul.pavlides@ibsplc.com</username>
+                            <!--Optional:-->
+                            <via1Criteria>$7</via1Criteria>
+                            <!--Optional:-->
+                            <via1CriteriaLocationType>A</via1CriteriaLocationType>
+                            <!--Optional:-->
+                            <preferredCarrierCriteria>$5</preferredCarrierCriteria>
+                        </arg0>
+                    </ws:getConnections>
+                </soapenv:Body>
+            </soapenv:Envelope>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('originCriteria')"/>
+            <arg evaluator="xml" expression="get-property('destinationCriteria')"/>
+            <arg evaluator="xml" expression="get-property('requestDateEffectiveFrom')"/>
+            <arg evaluator="xml" expression="get-property('requestDateEffectiveTo')"/>
+            <arg evaluator="xml" expression="get-property('carrier1Criteria')"/>
+            <arg evaluator="xml" expression="get-property('carrier2Criteria')"/>
+            <arg evaluator="xml" expression="get-property('via1Criteria')"/>
+        </args>
+    </payloadFactory>
+    <property name="messageType" scope="axis2" type="STRING" value="text/xml"/>
+    <header name="wsa:Action" scope="default" value="urn:getDirectFlights" xmlns:wsa="http://www.w3.org/2005/08/addressing"/>
+    <header expression="get-property('MessageID')" name="wsa:MessageID" scope="default" xmlns:wsa="http://www.w3.org/2005/08/addressing"/>
+    <header expression="get-property('oagEndPoint')" name="wsa:To" scope="default" xmlns:wsa="http://www.w3.org/2005/08/addressing"/>
+    <header name="Action" scope="default" value="urn:getDirectFlights"/>
+    <property name="HTTP_METHOD" scope="axis2" type="STRING" value="POST"/>
+    <property name="PRESERVE_WS_ADDRESSING" scope="default" type="STRING" value="true"/>
+    <property name="preserveProcessedHeaders" scope="default" type="STRING" value="true"/>
+    <property name="DISABLE_CHUNKING" scope="axis2" type="STRING" value="true"/>
+    <header expression="get-property('oagEndPoint')" name="To" scope="default"/>
+    <log level="full"/>
+    <call>
+        <endpoint>
+            <default format="soap11">
+                <timeout>
+                    <duration>60000</duration>
+                    <responseAction>fault</responseAction>
+                </timeout>
+                <suspendOnFailure>
+                    <initialDuration>2000</initialDuration>
+                    <progressionFactor>1.0</progressionFactor>
+                    <maximumDuration>3000</maximumDuration>
+                </suspendOnFailure>
+            </default>
+        </endpoint>
+    </call>
+    <log level="full"/>
+    <filter regex="200" source="get-property('axis2', 'HTTP_SC')">
+        <then>
+            <log level="custom">
+                <property name="switchlog" value="OAG getConnectionFlights service is successful"/>
+            </log>
+        </then>
+        <else>
+            <property expression="$body/soap:Fault/faultstring/text()" name="faultString" scope="default" type="STRING" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"/>
+            <log level="custom">
+                <property name="switchlog" value="Error while invoking the OAG getConnectionFlights service"/>
+                <property expression="$body/soap:Fault/faultstring/text()" name="faultString" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"/>
+            </log>
+            <sequence key="GetConnectionFlightsErrorSequence"/>
+        </else>
+    </filter>
+    <class name="com.ibsplc.oag.mediators.GetConnectionFlightsResponseMediator"/>
+    <filter regex="ERROR" source="get-property('FlightListStatus')">
+        <then>
+            <payloadFactory media-type="json">
+                <format>
+					{ "getConnectionFlightsResponse": {
+					"resultCode": "201",
+					"resultMessage": "$ctx:getConnectionFlightsErrorMessage",
+					"flightListDetails": null
+					}
+					}
+				</format>
+                <args/>
+            </payloadFactory>
+            <log level="full"/>
+            <log level="custom">
+                <property name="switchlog" value="Exception while processing getConnectionFlights service"/>
+            </log>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </then>
+        <else>
+            <property name="switchlog" scope="default" type="STRING" value="OAG getConnectionFlights service processed successfully"/>
+        </else>
+    </filter>
+</sequence>

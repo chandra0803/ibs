@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="PNRRetrieveAfterSearch" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="custom">
+        <property name="switchlog" value="Entering PNRRetrieveAfterSearch Sequence"/>
+        <property expression="get-property('MessageID')" name="ESB-MessageID"/>
+    </log>
+    <payloadFactory media-type="xml">
+        <format>
+            <soapenv:Envelope xmlns:app="http://xml.amadeus.com/2010/06/AppMdw_CommonTypes_v3" xmlns:iat="http://www.iata.org/IATA/2007/00/IATA2010.1" xmlns:link="http://wsdl.amadeus.com/2010/06/ws/Link_v1" xmlns:pnr="http://xml.amadeus.com/PNRRET_17_1_1A" xmlns:sec="http://xml.amadeus.com/2010/06/Security_v1" xmlns:ses="http://xml.amadeus.com/2010/06/Session_v3" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://xml.amadeus.com/2010/06/Types_v1">
+                <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+                    <ses:Session TransactionStatusCode="$1">
+                        <ses:SessionId>$2</ses:SessionId>
+                        <ses:SequenceNumber>$3</ses:SequenceNumber>
+                        <ses:SecurityToken>$4</ses:SecurityToken>
+                    </ses:Session>
+                </soapenv:Header>
+                <soapenv:Body>
+                    <PNR_Retrieve>
+                        <retrievalFacts>
+                            <retrieve>
+                                <type>2</type>
+                            </retrieve>
+                            <reservationOrProfileIdentifier>
+                                <reservation>
+                                    <controlNumber>$5</controlNumber>
+                                </reservation>
+                            </reservationOrProfileIdentifier>
+                            <personalFacts>
+                                <travellerInformation>
+                                    <traveller>
+                                        <surname>$6</surname>
+                                    </traveller>
+                                </travellerInformation>
+                            </personalFacts>
+                        </retrievalFacts>
+                    </PNR_Retrieve>
+                </soapenv:Body>
+            </soapenv:Envelope>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('transactionStatusCode')"/>
+            <arg evaluator="xml" expression="get-property('sessionId')"/>
+            <arg evaluator="xml" expression="get-property('sequenceNumber')"/>
+            <arg evaluator="xml" expression="get-property('securityToken')"/>
+            <arg evaluator="xml" expression="get-property('pnrNumber')"/>
+            <arg evaluator="xml" expression="get-property('surName')"/>
+        </args>
+    </payloadFactory>
+    <property name="messageType" scope="axis2" type="STRING" value="text/xml"/>
+    <header name="wsa:Action" scope="default" value="http://webservices.amadeus.com/PNRRET_17_1_1A" xmlns:wsa="http://www.w3.org/2005/08/addressing"/>
+    <header expression="get-property('MessageID')" name="wsa:MessageID" scope="default" xmlns:wsa="http://www.w3.org/2005/08/addressing"/>
+    <header expression="get-property('amadeusEndPoint')" name="wsa:To" scope="default" xmlns:wsa="http://www.w3.org/2005/08/addressing"/>
+    <header name="Action" scope="default" value="http://webservices.amadeus.com/PNRRET_17_1_1A"/>
+    <property name="HTTP_METHOD" scope="axis2" type="STRING" value="POST"/>
+    <property name="PRESERVE_WS_ADDRESSING" scope="default" type="STRING" value="true"/>
+    <property name="preserveProcessedHeaders" scope="default" type="STRING" value="true"/>
+    <header expression="get-property('amadeusEndPoint')" name="To" scope="default"/>
+    <call>
+        <endpoint>
+            <default format="soap11">
+                <timeout>
+                    <duration>60000</duration>
+                    <responseAction>fault</responseAction>
+                </timeout>
+                <suspendOnFailure>
+                    <initialDuration>2000</initialDuration>
+                    <progressionFactor>1.0</progressionFactor>
+                    <maximumDuration>3000</maximumDuration>
+                </suspendOnFailure>
+            </default>
+        </endpoint>
+    </call>
+    <log level="full"/>
+    <property expression="$header/awsse:Session/awsse:SessionId/text()" name="sessionId" scope="default" type="STRING" xmlns:awsse="http://xml.amadeus.com/2010/06/Session_v3"/>
+    <property expression="$header/awsse:Session/awsse:SequenceNumber/text()" name="sequenceNumber" scope="default" type="STRING" xmlns:awsse="http://xml.amadeus.com/2010/06/Session_v3"/>
+    <property expression="$header/awsse:Session/awsse:SecurityToken/text()" name="securityToken" scope="default" type="STRING" xmlns:awsse="http://xml.amadeus.com/2010/06/Session_v3"/>
+    <filter regex="200" source="get-property('axis2', 'HTTP_SC')">
+        <then>
+            <log level="custom">
+                <property name="switchlog" value="Amadeus PNRRetrieve successful"/>
+            </log>
+        </then>
+        <else>
+            <property expression="$body/soap:Fault/faultstring/text()" name="faultString" scope="default" type="STRING" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"/>
+            <log level="custom">
+                <property name="switchlog" value="Error while invoking the Amadeus PNRRetrieve service"/>
+                <property expression="$body/soap:Fault/faultstring/text()" name="faultString" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"/>
+            </log>
+            <sequence key="AmadeusErrorSequence"/>
+        </else>
+    </filter>
+    <log level="custom">
+        <property expression="$header/awsse:Session/awsse:SessionId/text()" name="amadeusSessionId" xmlns:awsse="http://xml.amadeus.com/2010/06/Session_v3"/>
+        <property expression="$header/awsse:Session/awsse:SequenceNumber/text()" name="amadeusSequenceNumber" xmlns:awsse="http://xml.amadeus.com/2010/06/Session_v3"/>
+    </log>
+    <class name="com.ibsplc.amadeus.mediators.PNRResponseMediator"/>
+    <filter regex="ERROR" source="get-property('PNRRetrieveStatus')">
+        <then>
+            <sequence key="SecuritySignOut"/>
+            <payloadFactory media-type="json">
+                <format>
+					{ "amadeusResponse": {
+					"resultCode": "201",
+					"resultMessage": "$ctx:PNRRetrieveErrorMessage",
+					"sessionId" : "$ctx:sessionId",
+					"sequenceNumber" : "$ctx:sequenceNumber",
+					"securityToken" : "$ctx:securityToken",
+					"pnrDetails": null
+					}
+					}
+				</format>
+                <args/>
+            </payloadFactory>
+            <log level="full"/>
+            <log level="custom">
+                <property name="switchlog" value="Exception while proccessing PNRReply- Return PNRRetrieve error response"/>
+            </log>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </then>
+        <else>
+            <property name="switchlog" scope="default" type="STRING" value="PNRReply processed successfully"/>
+        </else>
+    </filter>
+</sequence>

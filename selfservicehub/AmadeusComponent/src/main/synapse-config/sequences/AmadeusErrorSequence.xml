@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="AmadeusErrorSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="custom">
+        <property name="switchlog" value="Entering AmadeusErrorSequence"/>
+    </log>
+    <sequence key="SecuritySignOut"/>
+    <property name="HTTP_SC" scope="axis2" type="STRING" value="200"/>
+    <payloadFactory media-type="json">
+        <format>
+		{ "amadeusResponse": {
+			"resultCode": "201",
+			"resultMessage": "$ctx:faultString",
+			"sessionId" : "$ctx:sessionId",
+			"sequenceNumber" : "$ctx:sequenceNumber",
+			"securityToken" : "$ctx:securityToken",
+			"pnrDetails": null
+			}
+		}
+        </format>
+        <args/>
+    </payloadFactory>
+    <log level="full"/>
+    <respond/>
+</sequence>

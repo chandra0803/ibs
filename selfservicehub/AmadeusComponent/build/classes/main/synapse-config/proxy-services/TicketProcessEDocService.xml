@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="TicketProcessEDocService" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full"/>
+            <log level="custom">
+                <property name="switchlog" value="Entering TicketProcessEDocService"/>
+            </log>
+            <property expression="json-eval($.emdNumber)" name="emdNumber" scope="default" type="STRING"/>
+            <property expression="json-eval($.ticketNumber)" name="ticketNumber" scope="default" type="STRING"/>
+            <property expression="json-eval($.sessionId)" name="sessionId" scope="default" type="STRING"/>
+            <property expression="json-eval($.sequenceNumber)" name="sequenceNumber" scope="default" type="STRING"/>
+            <property expression="json-eval($.securityToken)" name="securityToken" scope="default" type="STRING"/>
+            <sequence key="AmadeusCredentialsSequence"/>
+            <log level="custom">
+                <property expression="json-eval($.emdNumber)" name="emdNumber"/>
+                <property expression="json-eval($.ticketNumber)" name="ticketNumber"/>
+                <property expression="json-eval($.clientSessionId)" name="clientSessionId"/>
+                <property expression="json-eval($.sessionId)" name="amadeusSessionId"/>
+                <property expression="json-eval($.sequenceNumber)" name="amadeusSequenceNumber"/>
+            </log>
+            <sequence key="TicketProcessEDoc"/>
+            <log level="custom">
+                <property expression="get-property('resultMessage')" name="resultMessage"/>
+            </log>
+            <filter regex="Success" source="get-property('resultMessage')">
+                <then>
+                    <log level="custom">
+                        <property name="switchlog" value="TicketProcessEDocService successful"/>
+                    </log>
+                    <payloadFactory media-type="json">
+                        <format>
+							{ "amadeusResponse": {
+							"resultCode": "200",
+							"resultMessage":
+							"Success",
+							"sessionId" : "$ctx:sessionId",
+							"sequenceNumber" :
+							"$ctx:sequenceNumber",
+							"securityToken" :
+							"$ctx:securityToken",
+							"pnrDetails": $ctx:ticketProcessEDocResponse
+							}
+							}
+						</format>
+                        <args/>
+                    </payloadFactory>
+                    <log level="full"/>
+                    <log level="custom">
+                        <property name="switchlog" value="Return TicketProcessEDocService response"/>
+                    </log>
+                    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                    <respond/>
+                </then>
+                <else>
+                    <log level="custom">
+                        <property name="switchlog" value="TicketProcessEDocService failed"/>
+                    </log>
+                    <payloadFactory media-type="json">
+                        <format>
+							{ "amadeusResponse": {
+							"resultCode": "201",
+							"resultMessage": "$ctx:resultMessage",
+							"sessionId" :
+							"$ctx:sessionId",
+							"sequenceNumber" : "$ctx:sequenceNumber",
+							"securityToken" : "$ctx:securityToken",
+							"pnrDetails": null
+							}
+							}
+						</format>
+                        <args/>
+                    </payloadFactory>
+                    <log level="full"/>
+                    <log level="custom">
+                        <property name="switchlog" value="Return TicketProcessEDocService response"/>
+                    </log>
+                    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                    <respond/>
+                </else>
+            </filter>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <log level="custom">
+                <property name="switchlog" value="Error while invoking the TicketProcessEDocService"/>
+            </log>
+            <sequence key="AmadeusFaultSequence"/>
+        </faultSequence>
+    </target>
+</proxy>

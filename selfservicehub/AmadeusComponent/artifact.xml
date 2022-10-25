@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="PNRRetrieve" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PNRRetrieve.xml</file>
+    </artifact>
+    <artifact name="PNRRetrieveService" groupId="com.ibsplc.AmadeusComponent.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/PNRRetrieveService.xml</file>
+    </artifact>
+    <artifact name="TicketDisplayTST" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/TicketDisplayTST.xml</file>
+    </artifact>
+    <artifact name="PNRSearch" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PNRSearch.xml</file>
+    </artifact>
+    <artifact name="PNRSearchService" groupId="com.ibsplc.AmadeusComponent.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/PNRSearchService.xml</file>
+    </artifact>
+    <artifact name="SecuritySignOut" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/SecuritySignOut.xml</file>
+    </artifact>
+    <artifact name="PNRRetrieveAfterSearch" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PNRRetrieveAfterSearch.xml</file>
+    </artifact>
+    <artifact name="PNRSearchRetreiveService" groupId="com.ibsplc.AmadeusComponent.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/PNRSearchRetreiveService.xml</file>
+    </artifact>
+    <artifact name="AmadeusFaultSequence" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/AmadeusFaultSequence.xml</file>
+    </artifact>
+    <artifact name="PNRDetailsService" groupId="com.ibsplc.AmadeusComponent.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/PNRDetailsService.xml</file>
+    </artifact>
+    <artifact name="PNRAddMultiElements" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PNRAddMultiElements.xml</file>
+    </artifact>
+    <artifact name="PNRAddRemarkService" groupId="com.ibsplc.AmadeusComponent.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/PNRAddRemarkService.xml</file>
+    </artifact>
+    <artifact name="AmadeusCredentialsSequence" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/AmadeusCredentialsSequence.xml</file>
+    </artifact>
+    <artifact name="AmadeusErrorSequence" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/AmadeusErrorSequence.xml</file>
+    </artifact>
+    <artifact name="TicketProcessEDocService" groupId="com.ibsplc.AmadeusComponent.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/TicketProcessEDocService.xml</file>
+    </artifact>
+    <artifact name="TicketProcessEDoc" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/TicketProcessEDoc.xml</file>
+    </artifact>
+    <artifact name="GetConnectionFlights" groupId="com.ibsplc.AmadeusComponent.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/GetConnectionFlights.xml</file>
+    </artifact>
+    <artifact name="GetDirectFlights" groupId="com.ibsplc.AmadeusComponent.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/GetDirectFlights.xml</file>
+    </artifact>
+    <artifact name="GetConnectionFlightsErrorSequence" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/GetConnectionFlightsErrorSequence.xml</file>
+    </artifact>
+    <artifact name="GetConnectionFlightsSequence" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/GetConnectionFlightsSequence.xml</file>
+    </artifact>
+    <artifact name="GetDirectFlightsErrorSequence" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/GetDirectFlightsErrorSequence.xml</file>
+    </artifact>
+    <artifact name="GetDirectFlightsSequence" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/GetDirectFlightsSequence.xml</file>
+    </artifact>
+    <artifact name="selfServicePNRRetrieveService" groupId="com.ibsplc.AmadeusComponent.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/selfServicePNRRetrieveService.xml</file>
+    </artifact>
+    <artifact name="selfServicePNRRetrieveSequence" groupId="com.ibsplc.AmadeusComponent.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/selfServicePNRRetrieveSequence.xml</file>
+    </artifact>
+</artifacts>

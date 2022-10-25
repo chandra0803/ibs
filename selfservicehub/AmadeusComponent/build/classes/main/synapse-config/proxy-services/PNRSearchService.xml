@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="PNRSearchService" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full"/>
+            <log level="custom">
+                <property name="switchlog" value="Entering PNRSearchService"/>
+            </log>
+            <property expression="json-eval($.surName)" name="surName" scope="default" type="STRING"/>
+            <property expression="json-eval($.ticketNumber)" name="eTicketNumber" scope="default" type="STRING"/>
+            <sequence key="AmadeusCredentialsSequence"/>
+            <property name="transactionStatusCode" scope="default" type="STRING" value="InSeries"/>
+            <property name="TstTansactionStatusCode" scope="default" type="STRING" value="End"/>
+            <log level="custom">
+                <property expression="json-eval($.surName)" name="surName"/>
+                <property expression="json-eval($.ticketNumber)" name="eTicketNumber"/>
+                <property expression="json-eval($.clientSessionId)" name="clientSessionId"/>
+            </log>
+            <sequence key="PNRSearch"/>
+            <log level="custom">
+                <property expression="get-property('resultMessage')" name="resultMessage"/>
+            </log>
+            <filter regex="Success" source="get-property('resultMessage')">
+                <then>
+                    <log level="custom">
+                        <property name="switchlog" value="PNRSearch successful"/>
+                    </log>
+                    <sequence key="PNRRetrieveAfterSearch"/>
+                    <property expression="$ctx:isSAAPNR" name="isSAAPNR" scope="default" type="STRING"/>
+                    <log level="custom">
+                        <property expression="$ctx:isSAAPNR" name="isSAAPNR"/>
+                    </log>
+                    <filter regex="Yes" source="get-property('isSAAPNR')">
+                        <then>
+                            <log level="custom">
+                                <property name="PNRType" value="Skipped TST call for SAAPNR in PNRSearchService"/>
+                            </log>
+                            <sequence key="SecuritySignOut"/>
+                            <payloadFactory media-type="json">
+                                <format>
+									{ "amadeusResponse": {
+									"resultCode": "200",
+									"resultMessage": "Success",
+									"sessionId" : "$ctx:sessionId",
+									"sequenceNumber" : "$ctx:sequenceNumber",
+									"securityToken" : "$ctx:securityToken",
+									"pnrDetails": $ctx:pnrRetrieveReponse
+									}
+									}
+								</format>
+                                <args/>
+                            </payloadFactory>
+                        </then>
+                        <else>
+                            <sequence key="TicketDisplayTST"/>
+                        </else>
+                    </filter>
+                    <payloadFactory media-type="json">
+                        <format>
+					{ "amadeusResponse": {
+					"resultCode": "200",
+					"resultMessage": "Success",
+					"sessionId" : "$ctx:sessionId",
+					"sequenceNumber" : "$ctx:sequenceNumber",
+					"securityToken" : "$ctx:securityToken",
+					"pnrDetails": $ctx:pnrRetrieveReponse
+					}
+					}
+				</format>
+                        <args/>
+                    </payloadFactory>
+                    <log level="full"/>
+                    <log level="custom">
+                        <property name="switchlog" value="Return PNRSearchService response"/>
+                    </log>
+                    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                    <respond/>
+                </then>
+                <else>
+                    <log level="custom">
+                        <property name="switchlog" value="PNRSearch failed"/>
+                    </log>
+                    <sequence key="SecuritySignOut"/>
+                    <payloadFactory media-type="json">
+                        <format>
+					{ "amadeusResponse": {
+					"resultCode": "201",
+					"resultMessage": "$ctx:resultMessage",
+					"sessionId" : "$ctx:sessionId",
+					"sequenceNumber" : "$ctx:sequenceNumber",
+					"securityToken" : "$ctx:securityToken",
+					"pnrDetails": null
+					}
+					}
+				</format>
+                        <args/>
+                    </payloadFactory>
+                    <log level="full"/>
+                    <log level="custom">
+                        <property name="switchlog" value="Return PNRSearchService response"/>
+                    </log>
+                    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                    <respond/>
+                </else>
+            </filter>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <log level="custom">
+                <property name="switchlog" value="Error while invoking the PNRSearchService"/>
+            </log>
+            <sequence key="AmadeusFaultSequence"/>
+        </faultSequence>
+    </target>
+</proxy>

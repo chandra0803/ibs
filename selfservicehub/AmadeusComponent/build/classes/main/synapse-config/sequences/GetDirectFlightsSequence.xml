@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="GetDirectFlightsSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="custom">
+        <property name="switchlog" value="Entering GetDirectFlightsSequence Sequence"/>
+        <property expression="get-property('oagEndPoint')" name="oagEndPoint"/>
+    </log>
+    <payloadFactory media-type="xml">
+        <format>
+            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.connections.oag.com/">
+                <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing"/>
+                <soapenv:Body>
+                    <ws:getDirectFlights>
+                        <!--Optional:-->
+                        <arg0 xmlns="">
+                            <!--Optional:-->
+                            <carrier1Criteria>$1</carrier1Criteria>
+                            <!--Optional:-->
+                            <destinationCriteria>$2</destinationCriteria>
+                            <!--Optional:-->
+                            <destinationCriteriaLocationType>A</destinationCriteriaLocationType>
+                            <!--Optional:-->
+                            <originCriteria>$3</originCriteria>
+                            <!--Optional:-->
+                            <originCriteriaLocationType>A</originCriteriaLocationType>
+                            <password>P@vs0@g2019</password>
+                            <!--Optional:-->
+                            <requestDate>$4</requestDate>
+                            <!--Optional:-->
+                            <requestDateEffectiveFrom>$4</requestDateEffectiveFrom>
+                            <!--Optional:-->
+                            <requestDateEffectiveTo>$5</requestDateEffectiveTo>
+                            <!--Optional:-->
+                            <requestTime>00:00:01</requestTime>
+                            <!--Optional:-->
+                            <rtnRequestDate>$5</rtnRequestDate>
+                            <!--Optional:-->
+                            <rtnRequestTime>23:59:00</rtnRequestTime>
+                            <!--Optional:-->
+                            <sortOrder>D</sortOrder>
+                            <username>paul.pavlides@ibsplc.com</username>
+                        </arg0>
+                    </ws:getDirectFlights>
+                </soapenv:Body>
+            </soapenv:Envelope>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('carrier1Criteria')"/>
+            <arg evaluator="xml" expression="get-property('destinationCriteria')"/>
+            <arg evaluator="xml" expression="get-property('originCriteria')"/>
+            <arg evaluator="xml" expression="get-property('requestDateEffectiveFrom')"/>
+            <arg evaluator="xml" expression="get-property('requestDateEffectiveTo')"/>
+        </args>
+    </payloadFactory>
+    <property name="messageType" scope="axis2" type="STRING" value="text/xml"/>
+    <header name="wsa:Action" scope="default" value="urn:getDirectFlights" xmlns:wsa="http://www.w3.org/2005/08/addressing"/>
+    <header expression="get-property('MessageID')" name="wsa:MessageID" scope="default" xmlns:wsa="http://www.w3.org/2005/08/addressing"/>
+    <header expression="get-property('oagEndPoint')" name="wsa:To" scope="default" xmlns:wsa="http://www.w3.org/2005/08/addressing"/>
+    <header name="Action" scope="default" value="urn:getDirectFlights"/>
+    <property name="HTTP_METHOD" scope="axis2" type="STRING" value="POST"/>
+    <property name="PRESERVE_WS_ADDRESSING" scope="default" type="STRING" value="true"/>
+    <property name="preserveProcessedHeaders" scope="default" type="STRING" value="true"/>
+    <property name="DISABLE_CHUNKING" scope="axis2" type="STRING" value="true"/>
+    <header expression="get-property('oagEndPoint')" name="To" scope="default"/>
+    <log level="full"/>
+    <call>
+        <endpoint>
+            <default format="soap11">
+                <timeout>
+                    <duration>60000</duration>
+                    <responseAction>fault</responseAction>
+                </timeout>
+                <suspendOnFailure>
+                    <initialDuration>2000</initialDuration>
+                    <progressionFactor>1.0</progressionFactor>
+                    <maximumDuration>3000</maximumDuration>
+                </suspendOnFailure>
+            </default>
+        </endpoint>
+    </call>
+    <log level="full"/>
+    <filter regex="200" source="get-property('axis2', 'HTTP_SC')">
+        <then>
+            <log level="custom">
+                <property name="switchlog" value="OAG getDirectFlights service is successful"/>
+            </log>
+        </then>
+        <else>
+            <property expression="$body/soap:Fault/faultstring/text()" name="faultString" scope="default" type="STRING" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"/>
+            <log level="custom">
+                <property name="switchlog" value="Error while invoking the OAG getDirectFlights service"/>
+                <property expression="$body/soap:Fault/faultstring/text()" name="faultString" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"/>
+            </log>
+            <sequence key="GetDirectFlightsErrorSequence"/>
+        </else>
+    </filter>
+    <class name="com.ibsplc.oag.mediators.GetDirectFlightsResponseMediator"/>
+    <filter regex="ERROR" source="get-property('FlightListStatus')">
+        <then>
+            <payloadFactory media-type="json">
+                <format>
+					{ "getDirectFlightsResponse": {
+					"resultCode": "201",
+					"resultMessage": "$ctx:getDirectFlightsErrorMessage",
+					"flightListDetails": null
+					}
+					}
+				</format>
+                <args/>
+            </payloadFactory>
+            <log level="full"/>
+            <log level="custom">
+                <property name="switchlog" value="Exception while processing getDirectFlights service"/>
+            </log>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </then>
+        <else>
+            <property name="switchlog" scope="default" type="STRING" value="OAG getDirectFlights service processed successfully"/>
+        </else>
+    </filter>
+</sequence>
