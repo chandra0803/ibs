@@ -1,0 +1,2422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mit XMLSpy v2006 rel. 3 sp2 bearbeitet (http://www.altova.com) von Roman
+	Gerike (Informationsdesign AG) -->
+<!-- edited with XMLSpy v2008 rel. 2 sp2 (http://www.altova.com) by Kerstin
+	Brill (Informationsdesign AG) -->
+<!--Weitere Additions Upgrade auf Version 2.0 -->
+<!-- <xs:schema xmlns:flx="http://www.fuelplus.de/flxXML/v2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="unqualified" attributeFormDefault="unqualified" version="2.0"
+	targetNamespace="http://www.fuelplus.de/flxXML/v2.0"> -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:flx="http://www.fuelplus.de/flxXML/v2.0" elementFormDefault="unqualified"
+	attributeFormDefault="unqualified" version="2.0">
+
+	<xs:annotation>
+		<xs:documentation>
+			Schema Name: flx
+			Copyright: Fuelplus
+			Schema Version
+			Number: 2.0 Version
+			Date: 2010-03-04
+			Notes:
+			Schema Desc:
+		</xs:documentation>
+	</xs:annotation>
+	<!-- 17/03/2010 mf Additions aus der eMail vom Christian Mietz 17/03/10
+		minOccurs="1" maxOccurs="1" wurde nicht added da Standardeinsellung Unit
+		use wurde pauschal auf required gesetzt da optional Standard -->
+	<xs:simpleType name="EmptyString">
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse" />
+			<xs:enumeration value="" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ACType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an AC: Length 1-3 chars.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="3" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SRCType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an source: Length 1-3
+				chars.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="3" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FlTypeType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an FL Type: Length 1-5
+				chars.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="5" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceTypeType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an ServiceType: Length
+				1-10
+				chars.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="10" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DivType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an division: Length 1-6
+				chars.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="6" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RegistrationType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an registration: Length
+				1-10
+				chars.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="10" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ICAOType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an ICAO: Length 1-32
+				chars.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="32" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MissionIdType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an Mission Id: Length
+				1-25
+				chars.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="25" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TypeType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an Type: Length 1-26
+				chars.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="26" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OFPIDType">
+		<xs:annotation>
+			<xs:documentation>OPF number</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"></xs:minLength>
+			<xs:maxLength value="10"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OIType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an OI: Length 1-512 chars.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"></xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CompanyType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an company: Length 1-3
+				chars.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="3" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CompanyTypeExt">
+		<xs:annotation>
+			<xs:documentation>defines the type of an company: Length 1-25
+				chars.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="25" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DomIntType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an Dom/Int Flag: Length
+				1 char,
+				D or
+				I.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="D" />
+			<xs:enumeration value="I" />
+			<xs:enumeration value="U" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SuffixType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an Flight Suffix: Length
+				1 chars
+				Uppercase
+				letter. Part of the Primary Key must have length 1
+				in Oracle
+				DB</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0" />
+			<xs:maxLength value="1" />
+			<xs:pattern value="[A-Z\s]" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FlightNumberType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an FlightNumber: Length
+				1-4
+				digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="4" />
+			<xs:pattern value="([0-9])+" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LocationType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an Location: Length 1-4
+				chars.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="4" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UnitType">
+		<xs:annotation>
+			<xs:documentation>defines the type of a unit: Length 1-3
+				chars.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="3" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Unit2Type">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[\w]{1,3}/[\w]{1,3}"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Unit2OptType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[\w]{1,3}(/[\w]{1,3})?"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="SeqNrType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an sequence number:
+				Length 1-10
+				digits.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedLong">
+			<xs:totalDigits value="10" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DateType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an Date. Format:
+				"YYYY-MM-DD"
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:date" />
+	</xs:simpleType>
+	<xs:simpleType name="DateTimeType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an DateTime. Format:
+				"YYYY-MM-DDThh:mm:ss"</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:dateTime" />
+	</xs:simpleType>
+	<xs:simpleType name="CountType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an Count.
+      </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:nonNegativeInteger" />
+	</xs:simpleType>
+	<xs:simpleType name="WeightType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an Weight, total digits
+				15.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="15" />
+			<xs:fractionDigits value="3" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DistanceType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an Distance, total
+				digits 12.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="12" />
+			<xs:fractionDigits value="3" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DensityValueType">
+		<xs:annotation>
+			<xs:documentation>defines the type of a density value, total
+				digits
+				13.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="13" />
+			<xs:fractionDigits value="4" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="QuantityType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an Quantity, total
+				digits 13.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="13" />
+			<xs:fractionDigits value="3" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IndexType">
+		<xs:annotation>
+			<xs:documentation>defines the type of an Load Index
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal" />
+	</xs:simpleType>
+	<xs:simpleType name="MACType">
+		<xs:restriction base="xs:decimal" />
+	</xs:simpleType>
+	<xs:simpleType name="StabilizerType">
+		<xs:restriction base="xs:decimal" />
+	</xs:simpleType>
+	<xs:simpleType name="RemarkType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="10" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RouteCodeType">
+		<xs:annotation>
+			<xs:documentation>defines the type of OFP Route Code
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="50" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DurationType">
+		<xs:annotation>
+			<xs:documentation>
+				defines the type of Flight Time 0000 (hhmm),
+				without
+				leading zero
+      </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="5" />
+			<xs:maxLength value="6" />
+			<xs:pattern value="-?([01]?[0-9]|2[0-3]):([0-5][0-9])"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TReasonType">
+		<xs:annotation>
+			<xs:documentation>defines the type of Tankering Reason
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="5"></xs:maxLength>
+			<xs:minLength value="1"></xs:minLength>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TRecommendType">
+		<xs:annotation>
+			<xs:documentation>defines the type of Tankering Fuel
+				Recommended
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1" />
+			<xs:enumeration value="Y" />
+			<xs:enumeration value="N" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AltitudeType">
+		<xs:annotation>
+			<xs:documentation>defines the type of Altitudes
+      </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer" />
+	</xs:simpleType>
+	<xs:simpleType name="ProfitType">
+		<xs:annotation>
+			<xs:documentation>defines the type of Profit
+      </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer" />
+	</xs:simpleType>
+	<xs:simpleType name="CostIndexType">
+		<xs:restriction base="xs:integer" />
+	</xs:simpleType>
+	<xs:simpleType name="AirwayType">
+		<xs:annotation>
+			<xs:documentation>defines the airway: Length 1-10 chars.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="10" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- ************************************** End of Types ********************* -->
+
+	<xs:element name="flx" type="flxType" />
+	<xs:complexType name="flxType">
+		<xs:sequence>
+			<xs:element ref="Flight" maxOccurs="unbounded" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="Flight" type="FlightType" />
+	<xs:complexType name="FlightType">
+		<xs:annotation>
+			<xs:documentation> defines the data for one flight.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element ref="FId" maxOccurs="1" minOccurs="1" />
+			<xs:element ref="AcMvmt" minOccurs="0" />
+			<xs:element ref="ATC" minOccurs="0" />
+			<xs:element ref="Fuel" minOccurs="0" />
+			<xs:element ref="FlightFuelLog" maxOccurs="1" minOccurs="0"></xs:element>
+			<xs:element ref="AlSpec" minOccurs="0" />
+			<xs:element ref="Load" minOccurs="0" />
+			<xs:element ref="OFP" minOccurs="0" />
+			<xs:element ref="ACARS" maxOccurs="1" minOccurs="0"></xs:element>
+			<xs:element ref="FDM" maxOccurs="1" minOccurs="0"></xs:element>
+			<xs:element ref="OpFuel" maxOccurs="1" minOccurs="0"></xs:element>
+		</xs:all>
+		<xs:attribute name="mode" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="flight" />
+					<xs:enumeration value="data" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:element name="FId" type="FIdType" />
+	<xs:complexType name="FIdType">
+		<xs:annotation>
+			<xs:documentation> All data in order to identify a flight. Dte
+				FlightDate Nr
+				FlightNumber Sf Suffix AlD Airline Designator Org
+				Origin Dst Destination Reg
+				Registration (required if mode = "flight")
+				Own AircraftOwner (required if mode =
+				"flight") Op FlightOperator
+				(required if mode = "flight") AC OperationalAircraftType
+				(required if
+				mode = "flight") DI DomInt (required if mode = "flight")
+			</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="Dte" type="DateType" />
+			<xs:element name="Nr" type="FlightNumberType" />
+			<xs:element name="Sf" type="SuffixType" minOccurs="0" />
+			<xs:element name="AlD" type="CompanyType" />
+			<xs:element name="Org" type="LocationType" />
+			<xs:element name="Dst" type="LocationType" />
+			<xs:element name="SchDst" type="LocationType" maxOccurs="1"
+				minOccurs="0"></xs:element>
+			<xs:element name="Reg" type="RegistrationType" />
+			<xs:element name="Own" type="CompanyType" minOccurs="0" />
+			<xs:element name="Op" type="CompanyType" minOccurs="0" />
+			<xs:element name="AC" type="ACType" minOccurs="0" />
+			<xs:element name="DI" type="DomIntType" minOccurs="0" />
+			<xs:element name="FltFlg" minOccurs="0" maxOccurs="1"
+				type="FltFlgTypeNullable"></xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:element name="AcMvmt" type="AcMvmtType" />
+	<xs:complexType name="AcMvmtType">
+		<xs:annotation>
+			<xs:documentation> Aircraft Movement Data / Timestamps (required if
+				mode = "flight")
+				OfBl Off Block (UTC) TkOf Take Off (UTC) TDwn Touch
+				Down (UTC) OnBl On Block (UTC)
+				OfBlLt Off Block in Local Time
+			</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="OfBl" type="DateTimeType" minOccurs="0" />
+			<xs:element name="TkOf" type="DateTimeType" minOccurs="0" />
+			<xs:element name="TDwn" type="DateTimeType" minOccurs="0" />
+			<xs:element name="OnBl" type="DateTimeType" minOccurs="0" />
+			<xs:element name="OfBlLt" type="DateTimeType" minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:element name="ATC" type="ATCType" />
+	<xs:complexType name="ATCType">
+		<xs:annotation>
+			<xs:documentation> Air Traffic Control Data. ICAO Aircraft
+				Identification (ICAO Call
+				Sign, Field 7) ICAO call sign, any length
+				Type TypeOfFlight (EU ETS Applicable
+				Indicator, Field 8) according to
+				CRCO codes of EUROCONTROL OI Other Information
+				(Field 18) according
+				to excemption rules of EU ETS If no values are available the whole
+				section will not transmitted</xs:documentation>
+		</xs:annotation>
+
+		<xs:all>
+			<xs:element name="ICAO" type="ICAOType" />
+			<xs:element name="Type" type="TypeType" minOccurs="0" />
+			<xs:element name="Route" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"></xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="OI" type="OIType" minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:element name="Fuel" type="FuelType" />
+	<xs:complexType name="FuelType">
+		<xs:annotation>
+			<xs:documentation> Src source of the fuel information (FMM or STD or
+				DLK, etc) DefU used
+				for all units if not given. Not used for density!
+				(KG or LT or UG) Default is
+				Sysweight. Sdp ShutdownFuel of preflight
+				SdpU ShutdownFuelUnit of preflight (default
+				= DefU) Rem RemainingFuel
+				RemU RemainingFuelUnit (default = DefU) Up UpliftFuel UpU
+				UpliftFuelUnit (default = DefU) Dns UpliftDensity (Sysdensity used
+				if not given)
+				DnsMasU UpliftDensityMassUnit (Sysweight used if not
+				given) DnsVolU
+				UpliftDensityVolumeUnit (Sysvol used if not given) Sup
+				Supplier Of OffblockFuel OfU
+				OffblockFuelUnit (default = DefU) Dmp
+				Fuel Dump DmpU Fuel dump Unit Sd ShutdownFuel
+				SdU ShutdownFuelUnit
+				(default = DefU) BC BlockConsumption BCU BlockConsumptionUnit
+				(default = DefU) TC TotalConsumption TCU TotalConsumptionUnit
+				(default = DefU)
+      </xs:documentation>
+		</xs:annotation>
+
+		<xs:all>
+			<xs:element name="Src" type="SRCType" />
+			<xs:element name="DefU" type="UnitType" minOccurs="0" />
+			<xs:element name="Sdp" minOccurs="0" type="SdpType">
+			</xs:element>
+			<xs:element name="Rem" minOccurs="0" type="RemType">
+			</xs:element>
+			<xs:element name="Up" minOccurs="0" type="UpType">
+			</xs:element>
+			<xs:element name="Dns" minOccurs="0" type="DnsType">
+			</xs:element>
+			<xs:element name="Sup" type="CompanyType" minOccurs="0" />
+			<xs:element name="Of" minOccurs="0" type="OfType">
+			</xs:element>
+			<xs:element name="Dmp" minOccurs="0" type="DmpType">
+			</xs:element>
+			<xs:element name="Sd" minOccurs="0" type="SdType">
+			</xs:element>
+			<xs:element name="BC" minOccurs="0" type="BCType">
+			</xs:element>
+			<xs:element name="TC" minOccurs="0" type="TCType">
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:element name="AlSpec" type="AlSpecType" />
+	<xs:complexType name="AlSpecType">
+		<xs:annotation>
+			<xs:documentation> Airline Specifics additional airline specific
+				data, formerly loaded
+				via SE06 Div Division DLH, division marker
+				RskHld RiskHolder DLH, Company
+				responsible for the fuel bill RepCus
+				ReportedCustomer AAWH SeqNr
+				FlightSequenceNumber AAWH FlTyp
+				FlightType AAWH STyp ServiceType AAWH Dist
+				DistanceFlown AAWH DistU
+				DistanceFlownUnit AAWH MisId MissionId AAWH
+      </xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="Div" type="DivType" minOccurs="0" />
+			<xs:element name="RskHld" type="CompanyType" minOccurs="0" />
+			<xs:element name="RepCus" type="CompanyType" minOccurs="0" />
+			<xs:element name="SeqNr" type="SeqNrType" minOccurs="0" />
+			<xs:element name="FlTyp" type="FlTypeType" minOccurs="0" />
+			<xs:element name="STyp" type="ServiceTypeType" minOccurs="0" />
+			<xs:element name="Dist" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="DistanceType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MisId" type="MissionIdType" minOccurs="0" />
+			<xs:element name="RCode" type="RouteCodeType" maxOccurs="1"
+				minOccurs="0"></xs:element>
+			<xs:element name="GTB" type="YesNoShortType" maxOccurs="1"
+				minOccurs="0"></xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:element name="Load" type="LoadType" />
+	<xs:complexType name="LoadType">
+		<xs:annotation>
+			<xs:documentation> Pax Passenger Information Bg Baggage Information
+				Mail Mail
+				Information Cargo Cargo Information </xs:documentation>
+		</xs:annotation>
+
+		<xs:all>
+			<xs:element name="LTWtU" type="UnitType" />
+			<xs:element ref="Pax" maxOccurs="1" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation> Passenger Information if Wt is not given, then
+						passenger
+						weight is calculated as (Male + Female + Chld) *
+						ETS_Pax_Weight MA Nr
+						MaleAdults MAWt Weight MaleAdults weight per
+						male/adult passenger MAWtU
+						WeightUnit MaleAdults default =
+						SysweightUnit F Nr Female FWt Weight
+						Female weight per female
+						passenger FWtU WeightUnit Female default =
+						SysweightUnit C Nr
+						Children CWt Weight Children weight per child
+						passenger CWtU
+						WeightUnit Children default = SysweightUnit I Nr Infants
+						IWt
+						Weight
+						Infants weight per infant passenger IWtU WeightUnit
+						Infants
+						default
+						= SysweightUnit Wt Weight weight of all passengers
+						WtU
+						WeightUnit
+						default = SysweightUnit WtU WeightUnit default =
+						SysweightUnit
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="Bg" maxOccurs="1" minOccurs="0" />
+			<xs:element ref="Mail" maxOccurs="1" minOccurs="0" />
+			<xs:element ref="Cg" maxOccurs="1" minOccurs="0" />
+			<xs:element ref="Trim" minOccurs="0" maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:element name="Cargo" substitutionGroup="Cg" />
+
+	<xs:element name="Pax" type="LoadPaxType" />
+	<xs:complexType name="LoadPaxType">
+		<xs:annotation>
+			<xs:documentation> Passenger Information if Wt is not given, then
+				passenger weight is
+				calculated as (Male + Female + Chld) *
+				ETS_Pax_Weight MA Nr MaleAdults MAWt Weight
+				MaleAdults weight per
+				male/adult passenger MAWtU WeightUnit MaleAdults default =
+				SysweightUnit F Nr Female FWt Weight Female weight per female
+				passenger FWtU
+				WeightUnit Female default = SysweightUnit C Nr
+				Children CWt Weight Children weight
+				per child passenger CWtU
+				WeightUnit Children default = SysweightUnit I Nr Infants
+				IWt Weight
+				Infants weight per infant passenger IWtU WeightUnit Infants default
+				=
+				SysweightUnit Wt Weight weight of all passengers WtU WeightUnit
+				default =
+				SysweightUnit PC Total Paxes On Board </xs:documentation>
+		</xs:annotation>
+
+		<xs:all>
+			<xs:element name="MA" type="CountType" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="MAWt" maxOccurs="1" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="F" type="CountType" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="FWt" maxOccurs="1" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="C" type="CountType" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="CWt" maxOccurs="1" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="I" type="CountType" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="IWt" maxOccurs="1" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Wt" maxOccurs="1" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PC" type="CountType" maxOccurs="1"
+				minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:element name="Bg" type="LoadBgType" />
+	<xs:complexType name="LoadBgType">
+		<xs:annotation>
+			<xs:documentation> Baggage Information BgPcs NrPieces additional
+				Info
+				BgWt NetWeight
+				used by EU-ETS for TK reporting BgWtU NetWeightUnit
+				used by EU-ETS for TK reporting,
+				default = Sysweight Unit BgULD
+				NrULDs additional Info BgTWt TaraWeight additional
+				Info BgTWtU
+				TaraWeightUnit additional Info, default = Sysweight Unit
+			</xs:documentation>
+		</xs:annotation>
+
+		<xs:all>
+			<xs:element name="BgPcs" type="CountType" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="BgWt" maxOccurs="1" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BgULD" type="CountType" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="BgTWt" maxOccurs="1" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:element name="Mail" type="LoadMailType" />
+	<xs:complexType name="LoadMailType">
+		<xs:annotation>
+			<xs:documentation> Mail Information MPcs NrPieces additional Info
+				MWt
+				NetWeight used by
+				EU-ETS for TK reporting MWtU NetWeightUnit used by
+				EU-ETS for TK reporting, default
+				= Sysweight Unit MULD NrULDs
+				additional Info MTWt TaraWeight additional Info MTWtU
+				TaraWeightUnit
+				additional Info, default = Sysweight Unit </xs:documentation>
+		</xs:annotation>
+
+		<xs:all>
+			<xs:element name="MPcs" type="CountType" minOccurs="0" />
+			<xs:element name="MWt" maxOccurs="1" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MULD" type="CountType" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="MTWt" maxOccurs="1" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:element name="Cg" type="LoadCgType" />
+	<xs:complexType name="LoadCgType">
+		<xs:annotation>
+			<xs:documentation> Cargo Information CPcs NrPieces additional Info
+				CWt NetWeight used by
+				EU-ETS for TK reporting CWtU NetWeightUnit used
+				by EU-ETS for TK reporting, default
+				= Sysweight Unit CULD NrULDs
+				additional Info CTWt TaraWeight additional Info CTWtU
+				TaraWeightUnit
+				additional Info, default = Sysweight Unit </xs:documentation>
+		</xs:annotation>
+
+		<xs:all>
+			<xs:element name="CPcs" type="CountType" minOccurs="0" />
+			<xs:element name="CWt" maxOccurs="1" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CULD" type="CountType" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="CTWt" maxOccurs="1" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:element name="Trim" type="LoadTrimType" />
+	<xs:complexType name="LoadTrimType">
+		<xs:annotation>
+			<xs:documentation>TDOW Dry Operating Weight DLW Dead Load Weight
+				TZFW
+				Zero Fuel Weight
+				TOW Take Off Weight LAW Landing Weight DOI Dry
+				Operating Index DLI Dead Load Index
+				LIZFW Loaded Index at Zero Fuel
+				Weight LITOW Loaded Index at Take Off Weight LILAW
+				Loaded Index at
+				Landing Weight LILimF Loaded Index Limit Forward LILimA Loaded Index
+				Limit Aft LIOpt Loaded Index Optimum MACZFW Mean Aerodynamics Chord
+				at Zero Fuel
+				Weight MACTOW Mean Aerodynamics Chord at Take Off Weight
+				MACLAW Mean Aerodynamics
+				Chord at Landing Weight Stab Stabilizer
+				Setting StabR StabilizerRemark / Flap
+				Setting </xs:documentation>
+		</xs:annotation>
+
+		<xs:all>
+			<xs:element name="TDOW" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DLW" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TZFW" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TOW" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="LAW" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="WeightType">
+							<xs:attribute name="u" type="UnitType" use="optional" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DOI" type="IndexType" minOccurs="0" />
+			<xs:element name="DLI" type="IndexType" minOccurs="0" />
+			<xs:element name="LIZFW" type="IndexType" minOccurs="0" />
+			<xs:element name="LITOW" type="IndexType" minOccurs="0" />
+			<xs:element name="LILAW" type="IndexType" minOccurs="0" />
+			<xs:element name="LILimF" type="IndexType" minOccurs="0" />
+			<xs:element name="LILimA" type="IndexType" minOccurs="0" />
+			<xs:element name="LIOpt" type="IndexType" minOccurs="0" />
+			<xs:element name="MACZFW" type="MACType" minOccurs="0" />
+			<xs:element name="MACTOW" type="MACType" minOccurs="0" />
+			<xs:element name="MACLAW" type="MACType" minOccurs="0" />
+			<xs:element name="Stab" type="StabilizerType" minOccurs="0" />
+			<xs:element name="StabR" type="RemarkType" minOccurs="0" />
+		</xs:all>
+	</xs:complexType>
+
+
+	<xs:element name="OFP" type="OFPType" />
+	<xs:complexType name="OFPType">
+		<xs:annotation>
+			<xs:documentation> Data from Operational Flight Planning System Gen
+				Genral Data Weight
+				Weight Calculation Fuel Fuel Calculation Profile
+				Flight Profile</xs:documentation>
+		</xs:annotation>
+
+		<xs:all>
+			<xs:element name="Gen">
+				<xs:annotation>
+					<xs:documentation>ID OFP Identification Number Dev
+						Performance-Deviation CI
+						Cost Index Mach Mach Number IAS Indicated
+						Air Speed Route Route Code
+						GDist Ground Distance ADist Air
+						Distance
+						GCD Great Circle Distance CFT
+						Calculated Flight Time AFF
+						Average
+						Fuel Flow AWC Average Wind Component
+            </xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="ID" type="OFPIDType" />
+						<xs:element name="Dev" type="QuantityType" minOccurs="0" />
+						<xs:element name="CI" type="CostIndexType" minOccurs="0" />
+						<xs:element name="Mach" type="QuantityType" minOccurs="0" />
+						<xs:element name="IAS" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="xs:decimal">
+										<xs:attribute name="u" use="optional" type="Unit2OptType" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="RCode" type="RouteCodeType"
+							minOccurs="0" />
+						<xs:element name="GDist" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="DistanceType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ADist" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="DistanceType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="GCD" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="DistanceType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="CFT" type="DurationType" minOccurs="0" />
+						<xs:element name="AFF" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="DistanceType">
+										<xs:attribute name="u" use="optional" type="Unit2OptType" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="AWC" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="DistanceType">
+										<xs:attribute name="u" use="optional" type="Unit2OptType" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Weight" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ODOW Dry Operationg Weight OLoad Planned
+						Load
+						OZFW
+						Planned
+						ZFW TOFE Estimated Take Off Weight TOFM Maximum
+						Take
+						Off
+						Weight LAWE
+						Estimated Landing Weight LAWM Maximum Landing
+						Weight
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="OWDefU" type="UnitType" />
+						<xs:element name="ODOW" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="WeightType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OLoad" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="WeightType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OZFW" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="WeightType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="TOFE" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="WeightType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="TOFM" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="WeightType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="LAWE" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="WeightType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="LAWM" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="WeightType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Fuel" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Trip Planned Trip Fuel (Burnoff) Cont
+						Contingency
+						Alternates Alternate Section Res Final Reserve PlnTOF
+						Planned Take
+						Off
+						Fuel Taxi Taxi Out TPoss Tankering Fuel Possible
+						TRec Tankering
+						Fuel
+						Recommended TReas Tankering Fuel Reason Tprof
+						Tankering Profit
+						ZfwcPlus
+						ZFW Correction Plus (kg) ZfwcpVal ZFW
+						Correction Plus
+						Factor (kg)
+						ZfwcMinus ZFW Correction Minus (kg)
+						ZfwcmVal ZFW
+						Correction Minus Factor
+						(kg) FlChanges Flight Level
+						Changes
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="OFDefU" type="UnitType">
+							<xs:annotation>
+								<xs:documentation>Default unit for the whole section
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Trip" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="QuantityType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Cont" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="QuantityType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Alternates" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Altn" maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation>AltnAirp Alternate Airport AltnTrip
+												Alternate Trip Fuel AltnTime Alternate Trip Time
+											</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:all>
+												<xs:element name="AltnAirp" type="LocationType"
+													minOccurs="0" />
+												<xs:element name="AltnTrip" minOccurs="0">
+													<xs:complexType>
+														<xs:simpleContent>
+															<xs:extension base="QuantityType">
+																<xs:attribute name="u" type="UnitType" use="optional" />
+															</xs:extension>
+														</xs:simpleContent>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="AltnTime" type="DurationType"
+													minOccurs="0" />
+											</xs:all>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Res" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="QuantityType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PlnTOF" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="QuantityType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Taxi" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="QuantityType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="TPoss" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="QuantityType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="TVol" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="QuantityType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="TRec" type="TRecommendType"
+							minOccurs="0" />
+						<xs:element name="TReas" type="TReasonType" minOccurs="0" />
+						<xs:element name="TProf" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="QuantityType">
+										<xs:attribute name="u" type="Unit2OptType" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ZFWCPlus" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="WeightType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ZFWCPVal" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="QuantityType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ZFWCMinus" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="WeightType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ZFWCMVal" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="QuantityType">
+										<xs:attribute name="u" type="UnitType" use="optional" />
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="FlChanges" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Fl" maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation>FlCorr Flight Level Change Altitude (m oder
+												ft) FlTrip Flight Level Change TripFuel (kg) FlTime Flight
+												Level Change TripTime</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:all>
+												<xs:element name="FlCorr" minOccurs="0">
+													<xs:complexType>
+														<xs:simpleContent>
+															<xs:extension base="AltitudeType">
+																<xs:attribute name="u" type="UnitType" use="optional" />
+															</xs:extension>
+														</xs:simpleContent>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="FlTrip" minOccurs="0">
+													<xs:complexType>
+														<xs:simpleContent>
+															<xs:extension base="WeightType">
+																<xs:attribute name="u" type="UnitType" use="optional" />
+															</xs:extension>
+														</xs:simpleContent>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="FlTime" type="DurationType"
+													minOccurs="0" />
+											</xs:all>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Profile" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Flight Profile Waypoints
+            </xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="Waypoints" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Waypoint" maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation>WpName Waypoint Name Alt Altitude
+												Dist
+												Cumulated Distance FltTime Cumulated Flight
+												Time Burn
+												Cumulated Burn Off Longitude of Waypoint
+												Latitude of
+												Waypoint
+											</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:all>
+												<xs:element name="WpName" minOccurs="0">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:minLength value="0" />
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element name="Alt" minOccurs="0">
+													<xs:complexType>
+														<xs:simpleContent>
+															<xs:extension base="AltitudeType">
+																<xs:attribute name="u" type="UnitType" use="optional" />
+															</xs:extension>
+														</xs:simpleContent>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="Airw" type="AirwayType"
+													minOccurs="0" />
+												<xs:element name="Dist" minOccurs="0">
+													<xs:complexType>
+														<xs:simpleContent>
+															<xs:extension base="DistanceType">
+																<xs:attribute name="u" type="UnitType" use="optional" />
+															</xs:extension>
+														</xs:simpleContent>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="FltTime" type="DurationType"
+													minOccurs="0" />
+												<xs:element name="Burn" minOccurs="0">
+													<xs:complexType>
+														<xs:simpleContent>
+															<xs:extension base="WeightType">
+																<xs:attribute name="u" type="UnitType" use="optional" />
+															</xs:extension>
+														</xs:simpleContent>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="Longitude" minOccurs="0">
+													<xs:complexType>
+														<xs:simpleContent>
+															<xs:extension base="xs:string">
+																<xs:attribute name="u" use="optional" type="UnitType" />
+															</xs:extension>
+														</xs:simpleContent>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="Latitude" minOccurs="0">
+													<xs:complexType>
+														<xs:simpleContent>
+															<xs:extension base="xs:string">
+																<xs:attribute name="u" type="UnitType" use="optional" />
+															</xs:extension>
+														</xs:simpleContent>
+													</xs:complexType>
+												</xs:element>
+											</xs:all>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+
+
+	<xs:complexType name="TVolType">
+	</xs:complexType>
+
+	<xs:simpleType name="FltFlgType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="C"></xs:enumeration>
+			<xs:minLength value="0"></xs:minLength>
+			<xs:maxLength value="1"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="FltFlgTypeNullable">
+		<xs:annotation>
+			<xs:documentation>
+				defines the type of an FltFlg: Length 1 chars.
+				Allow null values
+			</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="FltFlgType EmptyString" />
+	</xs:simpleType>
+
+	<xs:element name="FlightFuelLog" type="FlightFuelLogType"></xs:element>
+
+	<xs:complexType name="FlightFuelLogType">
+		<xs:all>
+			<xs:element name="Src" type="SRCType" maxOccurs="1"
+				minOccurs="1"></xs:element>
+			<xs:element name="FLN" type="FLNType" maxOccurs="1"
+				minOccurs="0"></xs:element>
+			<xs:element name="DefU" type="UnitType" minOccurs="0" />
+			<xs:element name="Sdp" minOccurs="0" type="SdpType"></xs:element>
+			<xs:element name="Rem" minOccurs="0" maxOccurs="1" type="RemType"></xs:element>
+			<xs:element name="Ups" type="UpsType" maxOccurs="1"
+				minOccurs="0"></xs:element>
+			<xs:element name="Of" minOccurs="0" maxOccurs="1" type="OfType"></xs:element>
+			<xs:element name="Dmp" minOccurs="0" type="DmpType"></xs:element>
+			<xs:element name="Sd" minOccurs="0" type="SdType"></xs:element>
+			<xs:element name="BC" minOccurs="0" type="BCType"></xs:element>
+			<xs:element name="TC" minOccurs="0" type="TCType"></xs:element>
+		</xs:all>
+
+
+	</xs:complexType>
+
+
+	<xs:simpleType name="FLNType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"></xs:minLength>
+			<xs:maxLength value="7"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="UpliftsType">
+		<xs:all>
+			<xs:element name="Tkt" type="TktType" maxOccurs="1"
+				minOccurs="0"></xs:element>
+			<xs:element name="UpInd" type="UpIndType" maxOccurs="1"
+				minOccurs="1"></xs:element>
+			<xs:element name="Up" type="UpType" maxOccurs="1"
+				minOccurs="1"></xs:element>
+			<xs:element name="Dns" type="DnsType" maxOccurs="1"
+				minOccurs="1"></xs:element>
+			<xs:element name="DnsSrc" type="DnsSrcType" maxOccurs="1"
+				minOccurs="1"></xs:element>
+			<xs:element name="Sup" type="CompanyType" maxOccurs="1"
+				minOccurs="0"></xs:element>
+			<xs:element name="IPA" type="CompanyTypeExt" maxOccurs="1"
+				minOccurs="0"></xs:element>
+			<xs:element name="PrdTyp" type="PrdTypType" maxOccurs="1"
+				minOccurs="0"></xs:element>
+			<xs:element name="DlvyDt" type="DateType" maxOccurs="1"
+				minOccurs="0"></xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:simpleType name="TktType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"></xs:minLength>
+			<xs:maxLength value="20"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:simpleType name="UpIndType">
+		<xs:annotation>
+			<xs:documentation>UP - Uplift
+				PF - Prefuel
+				RF - Refuel
+				DF - Defuel
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UP"></xs:enumeration>
+			<xs:enumeration value="PF"></xs:enumeration>
+			<xs:enumeration value="RF"></xs:enumeration>
+			<xs:enumeration value="DF"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="UpType">
+		<xs:simpleContent>
+			<xs:extension base="QuantityType">
+				<xs:attribute use="optional" name="u" type="UnitType"></xs:attribute>
+				<xs:attribute name="bill" type="YesNoShortType" use="optional"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="DnsType">
+		<xs:simpleContent>
+			<xs:extension base="DensityValueType">
+				<xs:attribute use="optional" name="u" type="Unit2Type"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="SdType">
+		<xs:simpleContent>
+			<xs:extension base="QuantityType">
+				<xs:attribute use="optional" name="u" type="UnitType"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="BCType">
+		<xs:simpleContent>
+			<xs:extension base="QuantityType">
+				<xs:attribute use="optional" name="u" type="UnitType"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="TCType">
+		<xs:simpleContent>
+			<xs:extension base="QuantityType">
+				<xs:attribute use="optional" name="u" type="UnitType"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="DmpType">
+		<xs:simpleContent>
+			<xs:extension base="QuantityType">
+				<xs:attribute use="optional" name="u" type="UnitType"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="OfType">
+		<xs:simpleContent>
+			<xs:extension base="QuantityType">
+				<xs:attribute use="optional" name="u" type="UnitType"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="SdpType">
+		<xs:simpleContent>
+			<xs:extension base="QuantityType">
+				<xs:attribute use="optional" name="u" type="UnitType"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="RemType">
+		<xs:simpleContent>
+			<xs:extension base="QuantityType">
+				<xs:attribute use="optional" name="u" type="UnitType"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name="DnsSrcType">
+		<xs:annotation>
+			<xs:documentation>STD - Standard SUP - Supplier</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="STD"></xs:enumeration>
+			<xs:enumeration value="SUP"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="PrdTypType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"></xs:minLength>
+			<xs:maxLength value="7"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="ACARS" type="ACARSType"></xs:element>
+
+	<xs:complexType name="ACARSType">
+		<xs:sequence>
+			<xs:element name="Type_B" type="MsgType_BType" maxOccurs="1"
+				minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MsgType">
+		<xs:all>
+			<xs:element name="Src" type="SrcType_BType" maxOccurs="1"
+				minOccurs="1"></xs:element>
+			<xs:element name="Timestamp" type="DateTimeType"
+				maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="FoB" type="FuelUnitReqType" maxOccurs="1"
+				minOccurs="1"></xs:element>
+			<xs:element name="Upl" type="FuelUnitReqType" maxOccurs="1"
+				minOccurs="0"></xs:element>
+			<xs:element name="ZFW" type="FuelUnitReqType" maxOccurs="1"
+				minOccurs="0"></xs:element>
+			<xs:element name="Longitude" type="Number9_6Type"
+				maxOccurs="1" minOccurs="0"></xs:element>
+			<xs:element name="Latitude" type="Number9_6Type"
+				maxOccurs="1" minOccurs="0"></xs:element>
+		</xs:all>
+
+	</xs:complexType>
+
+
+	<xs:simpleType name="SrcType_BType">
+		<xs:annotation>
+			<xs:documentation>M2A - offblock
+				M2B - takeoff
+				M2C - touchdown
+				M2D -
+				onblock
+				M2h - sector(leg) summary
+				ARR - arrival = M2D or M2C
+				DEP -
+				departure = M2A or M2B
+				POS - positioning (A8h)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"></xs:minLength>
+			<xs:maxLength value="3"></xs:maxLength>
+			<xs:enumeration value="M2A"></xs:enumeration>
+			<xs:enumeration value="M2B"></xs:enumeration>
+			<xs:enumeration value="M2C"></xs:enumeration>
+			<xs:enumeration value="M2D"></xs:enumeration>
+			<xs:enumeration value="M2h"></xs:enumeration>
+			<xs:enumeration value="ARR"></xs:enumeration>
+			<xs:enumeration value="DEP"></xs:enumeration>
+			<xs:enumeration value="POS"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Number9_6Type">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="9" />
+			<xs:fractionDigits value="6" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="FuelUnitReqType">
+		<xs:simpleContent>
+			<xs:extension base="QuantityType">
+				<xs:attribute name="u" type="UnitType" use="required"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="UpsType">
+		<xs:sequence>
+			<xs:element name="Up" type="UpliftsType" maxOccurs="unbounded"
+				minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MsgType_BType">
+		<xs:sequence>
+			<xs:element name="Msg" type="MsgType" maxOccurs="unbounded"
+				minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="YesNoShortType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Y"></xs:enumeration>
+			<xs:enumeration value="N"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="FDM" type="FDMType"></xs:element>
+
+	<xs:complexType name="FDMType">
+		<xs:annotation>
+			<xs:documentation>Flight data management type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="FltPrf" type="FltPrfNotSumType" maxOccurs="1" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Flight profile</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FuelQty" type="FuelQtyType" maxOccurs="1" minOccurs="0"></xs:element>
+			<xs:element name="Params" type="ParamsType" maxOccurs="1" minOccurs="0"></xs:element>
+			<xs:element name="Eng" type="EngType" maxOccurs="1" minOccurs="0"></xs:element>
+			<xs:element name="FltSum" type="FltSumType" maxOccurs="1" minOccurs="0"></xs:element>
+			<xs:element name="Crw" type="CrewType" maxOccurs="1" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="FltPrfNotSumType">
+		<xs:annotation>
+			<xs:documentation>Flight profile type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ADist" type="AirDistType" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Air distance</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="GDist" type="GroundDistType" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Ground distance</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Alt" type="AltType" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Altitude</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Dur" type="DurType" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Duration in minutes
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AI" type="AIType" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Anti Ice</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Flaps" type="FlapsType" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Flaps setting</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Mach" type="MachType" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Speed</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CI" type="CIType" maxOccurs="1"
+				minOccurs="0">
+                <xs:annotation>
+                	<xs:documentation>Cost index</xs:documentation></xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+  <xs:complexType name="FltPrfType">
+    <xs:sequence>
+    	<xs:element name="ADist" type="ADistType" maxOccurs="1"
+    		minOccurs="0">
+    	</xs:element>
+    	<xs:element name="GDist" type="GDistType" maxOccurs="1" minOccurs="0"></xs:element>
+    	<xs:element name="GoA" type="Number2Type" maxOccurs="1"
+            	minOccurs="0">
+            </xs:element>
+
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ADistType">
+    <xs:simpleContent>
+      <xs:extension base="Number10_3Type">
+        <xs:attribute name="u" type="UnitType" use="required"></xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="GDistType">
+  	<xs:simpleContent>
+  		<xs:extension base="Number10_3Type">
+  			<xs:attribute name="u" type="UnitType" use="required"></xs:attribute>
+  		</xs:extension>
+  	</xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="AirDistType">
+		<xs:annotation>
+			<xs:documentation>Air distance type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ICl" type="Number10_3Type" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Initial climb</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Cl" type="Number10_3Type" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Climb</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Crs" type="Number10_3Type" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Cruise</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Dsc" type="Number10_3Type" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Descent</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Apr" type="Number10_3Type" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Approach</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="u" type="UnitType" use="required">
+			<xs:annotation>
+				<xs:documentation>Air distance unit</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:simpleType name="Number5_2Type">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="5" />
+			<xs:fractionDigits value="2" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Number10_3Type">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="10" />
+			<xs:fractionDigits value="3" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Number13_3Type">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="13" />
+			<xs:fractionDigits value="3" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Number15_3Type">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="15" />
+			<xs:fractionDigits value="3" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Number10">
+		<xs:restriction base="xs:long">
+			<xs:totalDigits value="10" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Number2Type">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="2" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="GroundDistType">
+		<xs:annotation>
+			<xs:documentation>Ground distance type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TxO" type="Number10_3Type" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Taxi out</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TkO" type="Number10_3Type" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Take off</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ICl" type="Number10_3Type" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Initial climb</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Cl" type="Number10_3Type" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Climb</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Crs" type="Number10_3Type" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Cruise</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Dsc" type="Number10_3Type" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Descent</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Apr" type="Number10_3Type" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Approach</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Lnd" type="Number10_3Type" maxOccurs="1"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Landing</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TxI" type="Number10_3Type" maxOccurs="1"
+				minOccurs="0"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="u" type="UnitType" use="required">
+			<xs:annotation>
+				<xs:documentation>Ground distance unit</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+    <xs:complexType name="AltType">
+    	<xs:annotation>
+    		<xs:documentation>Altitude type</xs:documentation>
+    	</xs:annotation>
+    	<xs:sequence>
+    		<xs:element name="TxO" type="Number10_3Type" maxOccurs="1"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Taxi out / End of phase</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="TkO" type="Number10_3Type" maxOccurs="1"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Take off / End of phase</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="ICl" type="Number10_3Type" maxOccurs="1"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Initial climb / End of phase</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="Cl" type="Number10_3Type" maxOccurs="1"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>
+    					Climb / End of phase
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="CrsMin" type="Number10_3Type"
+    			maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>
+    					Cruise / Minimum
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="CrsAvg" type="Number10_3Type"
+    			maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>
+    					Cruise / Average
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="CrsMax" type="Number10_3Type"
+    			maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Cruise / Maximum</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="Dsc" type="Number10_3Type" maxOccurs="1"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Descent / Start of phase</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="Apr" type="Number10_3Type" maxOccurs="1"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Approach / Start of phase</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="Lnd" type="Number10_3Type" maxOccurs="1"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Landing / Start of phase</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="TxI" type="Number10_3Type" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Taxi in / Start of phase</xs:documentation></xs:annotation></xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="u" type="UnitType" use="required">
+    		<xs:annotation>
+    			<xs:documentation>Altitude unit</xs:documentation>
+    		</xs:annotation>
+    	</xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="DurType">
+        <xs:annotation>
+        	<xs:documentation>Duration in minutes type</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+    		<xs:element name="TxO" type="Number10_3Type" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Taxi out</xs:documentation></xs:annotation></xs:element>
+    		<xs:element name="TkO" type="Number10_3Type" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Take off</xs:documentation></xs:annotation></xs:element>
+    		<xs:element name="ICl" type="Number10_3Type" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Initial climb</xs:documentation></xs:annotation></xs:element>
+    		<xs:element name="Cl" type="Number10_3Type" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Climb</xs:documentation></xs:annotation></xs:element>
+    		<xs:element name="Crs" type="Number10_3Type" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Cruise</xs:documentation></xs:annotation></xs:element>
+    		<xs:element name="Dsc" type="Number10_3Type" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Descent</xs:documentation></xs:annotation></xs:element>
+    		<xs:element name="Apr" type="Number10_3Type" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Approach</xs:documentation></xs:annotation></xs:element>
+    		<xs:element name="Lnd" type="Number10_3Type" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Landing</xs:documentation></xs:annotation></xs:element>
+    		<xs:element name="TxI" type="Number10_3Type" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Taxi in</xs:documentation></xs:annotation></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AIType">
+        <xs:annotation>
+        	<xs:documentation>Anti Ice Type</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+    		<xs:element name="TxO" type="YesNoShortType" maxOccurs="1"
+    			minOccurs="0">
+                <xs:annotation>
+                	<xs:documentation>Taxi out</xs:documentation></xs:annotation>
+    		</xs:element>
+    		<xs:element name="TkO" type="YesNoShortType" maxOccurs="1"
+    			minOccurs="0">
+                <xs:annotation>
+                	<xs:documentation>Take off</xs:documentation></xs:annotation>
+    		</xs:element>
+    		<xs:element name="Lnd" type="YesNoShortType" maxOccurs="1"
+    			minOccurs="0">
+                <xs:annotation>
+                	<xs:documentation>Landing</xs:documentation></xs:annotation>
+    		</xs:element>
+    		<xs:element name="TxI" type="YesNoShortType" maxOccurs="1"
+    			minOccurs="0">
+                <xs:annotation>
+                	<xs:documentation>Taxi in</xs:documentation></xs:annotation>
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="FlapsType">
+        <xs:annotation>
+        	<xs:documentation>Flaps setting type</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+    		<xs:element name="TkO" type="Number2Type" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Take off</xs:documentation></xs:annotation></xs:element>
+    		<xs:element name="Lnd" type="Number2Type" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Landing</xs:documentation></xs:annotation></xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="u" type="FlapsUnitType" use="required">
+    		<xs:annotation>
+    			<xs:documentation>Pos/Dgr</xs:documentation></xs:annotation></xs:attribute>
+    </xs:complexType>
+
+    <xs:simpleType name="FlapsUnitType">
+    	<xs:restriction base="xs:string">
+    		<xs:enumeration value="Pos"></xs:enumeration>
+    		<xs:enumeration value="Dgr"></xs:enumeration>
+    	</xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="MachType">
+    	<xs:annotation>
+    		<xs:documentation>Speed type</xs:documentation>
+    	</xs:annotation>
+    	<xs:sequence>
+    		<xs:element name="ClE" type="Number10_3Type" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>End of climb phase (Top of climb)</xs:documentation></xs:annotation></xs:element>
+    		<xs:element name="CrsAvg" type="Number10_3Type" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Cruise average</xs:documentation></xs:annotation></xs:element>
+    		<xs:element name="DscB" type="Number10_3Type" maxOccurs="1"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>
+    					Beginning of descent (Top of descent)
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CIType">
+    	<xs:annotation>
+    		<xs:documentation>Cost index type</xs:documentation>
+    	</xs:annotation>
+    	<xs:sequence>
+    		<xs:element name="TkO" type="Number10" maxOccurs="1"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Take off</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="Lnd" type="Number10" maxOccurs="1"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Landing</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="FuelQtyType">
+    	<xs:sequence>
+    		<xs:element name="Tanks" type="TanksType" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TanksType">
+    	<xs:sequence>
+    		<xs:element name="Tank" type="TankType" maxOccurs="unbounded" minOccurs="0"></xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="u" type="UnitType" use="required"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="TankType">
+    	<xs:sequence>
+    		<xs:element name="TxO" type="Number13_3Type" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:element name="Lnd" type="Number13_3Type" maxOccurs="1" minOccurs="0"></xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="tnk" type="TnkUnitAttrType"
+    		use="required">
+    	</xs:attribute>
+    </xs:complexType>
+
+    <xs:simpleType name="TnkUnitAttrType">
+    	<xs:restriction base="xs:string">
+    		<xs:enumeration value="C"></xs:enumeration>
+    		<xs:enumeration value="R1"></xs:enumeration>
+    		<xs:enumeration value="R2"></xs:enumeration>
+    		<xs:enumeration value="R3"></xs:enumeration>
+    		<xs:enumeration value="L1"></xs:enumeration>
+    		<xs:enumeration value="L2"></xs:enumeration>
+    		<xs:enumeration value="L3"></xs:enumeration>
+    		<xs:enumeration value="T"></xs:enumeration>
+    		<xs:minLength value="1"></xs:minLength>
+    		<xs:maxLength value="2"></xs:maxLength>
+    	</xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="ParamsType">
+    	<xs:sequence>
+    		<xs:element name="ISATempDev" type="ISATempDevType"
+    			maxOccurs="1" minOccurs="0">
+    		</xs:element>
+    		<xs:element name="ACPacks" type="ACPacksType" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="Wt" type="WtType" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ISATempDevType">
+    	<xs:sequence>
+    		<xs:element name="TkO" type="Number5_2Type" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:element name="ClE" type="Number5_2Type" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="Crs" type="Number5_2Type" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="DscB" type="Number5_2Type" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="Lnd" type="Number5_2Type" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ACPacksType">
+    	<xs:sequence>
+    		<xs:element name="TkO" type="Number2Type" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="WtType">
+    	<xs:sequence>
+    		<xs:element name="TxO" type="Number15_3Type" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="TkO" type="Number15_3Type" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="Lnd" type="Number15_3Type" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="u" type="UnitType" use="required"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="EngType">
+    	<xs:sequence>
+    		<xs:element name="Tms" type="TmsType" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="Burns" type="BurnsType" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TmsType">
+    	<xs:sequence>
+    		<xs:element name="Tm" type="TmType" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TmType">
+    	<xs:sequence>
+    		<xs:element name="TkO" type="Number10_3Type" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="TxI" type="Number10_3Type" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="eng" type="EngAttrType" use="required"></xs:attribute>
+    </xs:complexType>
+
+    <xs:simpleType name="EngAttrType">
+    	<xs:restriction base="xs:integer">
+    		<xs:minInclusive value="1"></xs:minInclusive>
+    		<xs:maxInclusive value="99"></xs:maxInclusive>
+    	</xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="BurnsType">
+    	<xs:sequence>
+    		<xs:element name="Burn" type="BurnType" maxOccurs="unbounded" minOccurs="0"></xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="u" type="UnitType" use="required"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="BurnType">
+    	<xs:sequence>
+    		<xs:element name="TxO" type="Number13_3Type" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:element name="TkO" type="Number13_3Type" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:element name="ICl" type="Number13_3Type" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:element name="Cl" type="Number13_3Type" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:element name="Crs" type="Number13_3Type" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:element name="Dsc" type="Number13_3Type" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:element name="Apr" type="Number13_3Type" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:element name="Lnd" type="Number13_3Type" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:element name="TxI" type="Number13_3Type" maxOccurs="1" minOccurs="0"></xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="eng" type="TEngAttrWithTotalType"
+    		use="required">
+    		<xs:annotation>
+    			<xs:documentation>
+    				Engine number 1,2,3,4; 0 for total
+    			</xs:documentation>
+    		</xs:annotation>
+    	</xs:attribute>
+    </xs:complexType>
+
+    <xs:simpleType name="TEngAttrWithTotalType">
+    	<xs:restriction base="xs:integer">
+    		<xs:minInclusive value="0"></xs:minInclusive>
+    		<xs:maxExclusive value="100"></xs:maxExclusive>
+    	</xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="FltSumType">
+    	<xs:sequence>
+    		<xs:element name="FltPrf" type="FltPrfType" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Flight profile for summary</xs:documentation>
+    			</xs:annotation></xs:element>
+    		<xs:element name="Params" type="FltSumParamsType"
+    			maxOccurs="1" minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="FltSumParamsType">
+    	<xs:sequence>
+    		<xs:element name="ATemp" type="Number5_2Type" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:element name="ZFW" type="ZFWType" maxOccurs="1" minOccurs="0"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ZFWType">
+    	<xs:simpleContent>
+    		<xs:extension base="Number15_3Type">
+    			<xs:attribute name="u" type="UnitType" use="required"></xs:attribute>
+    		</xs:extension>
+    	</xs:simpleContent>
+    </xs:complexType>
+
+
+
+    <xs:complexType name="CrewType">
+        <xs:annotation>
+        	<xs:documentation>Crew</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+    		<xs:element name="CID" type="CIDType">
+    			<xs:annotation>
+    				<xs:documentation>Cpt id</xs:documentation>
+    			</xs:annotation></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="CIDType">
+    	<xs:restriction base="xs:string">
+    		<xs:minLength value="1"></xs:minLength>
+    		<xs:maxLength value="25"></xs:maxLength>
+    	</xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="OpFuel" type="OpFuelType"></xs:element>
+
+    <xs:complexType name="OpFuelType">
+    	<xs:annotation>
+    		<xs:documentation>Operational fuel</xs:documentation>
+    	</xs:annotation>
+    	<xs:sequence>
+    		<xs:element name="TgtF" type="TargetFuelType" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Target fuel after uplift</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="RqstF" type="RequestedFuelType" maxOccurs="1" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>Fuel requested by pilot</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TargetFuelType">
+    	<xs:simpleContent>
+    		<xs:extension base="Number13_3Type">
+    			<xs:attribute name="u" type="UnitType" use="optional"></xs:attribute>
+    		</xs:extension>
+    	</xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="RequestedFuelType">
+    	<xs:simpleContent>
+    		<xs:extension base="Number13_3Type">
+    			<xs:attribute name="u" type="UnitType" use="optional"></xs:attribute>
+    		</xs:extension>
+    	</xs:simpleContent>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="ALL" monitorInterval="5">
+   <Properties>
+      <Property name="log-path">/projects/AirLink/itsairprd/applns/apache/htdocs/logs/tomcat/Tailog_Logs</Property>
+   </Properties>
+   <!-- file appender -->
+   <Appenders>
+      <RollingFile name="TailogIntegration-log" fileName="${log-path}/TailogIntegration.log" immediateFlush="true" append="true" filePattern="${log-path}/backup/%d{ddMMyyyy}_TailogIntegration.log">
+         <!-- log pattern -->
+         <PatternLayout pattern="%X{threadId} %d{yyyy-MM-dd HH:mm:ss} [%-4r] [%-5p] [%c:%L] ---!!! %X{tockenId} - %m%n" />
+								 
+         <Policies>
+            <TimeBasedTriggeringPolicy interval="1" />
+         </Policies>
+      </RollingFile>
+      <RollingFile name="TailogIntegration-Controller-log" fileName="${log-path}/TailogIntegration-Controller.log" immediateFlush="true" append="true" filePattern="${log-path}/backup/%d{ddMMyyyy}_TailogIntegration-Controller.log">
+         <!-- log pattern -->
+         <PatternLayout pattern="%X{threadId} %d{yyyy-MM-dd HH:mm:ss} %-4r [%-5p] [%c] - %X{tockenId} - %m%n" />
+         <Policies>
+            <TimeBasedTriggeringPolicy interval="1" />
+         </Policies>
+      </RollingFile>
+      <RollingFile name="TailogIntegration-service-log" fileName="${log-path}/TailogIntegration-service-log.log" immediateFlush="true" append="true" filePattern="${log-path}/backup/%d{ddMMyyyy}_TailogIntegration-service-log.log">
+         <!-- log pattern -->
+         <PatternLayout pattern="%X{threadId} %d{yyyy-MM-dd HH:mm:ss} %-4r [%-5p] [%c] - %X{tockenId} - %m%n" />
+         <Policies>
+            <TimeBasedTriggeringPolicy interval="1" />
+         </Policies>
+      </RollingFile>
+      <RollingFile name="spring-log" fileName="${log-path}/spring.log" immediateFlush="true" append="true" filePattern="${log-path}/backup/%d{ddMMyyyy}_spring.log">
+         <!-- log pattern -->
+         <PatternLayout pattern="%X{threadId} %d{yyyy-MM-dd HH:mm:ss} %-4r [%-5p] [%c] - %X{tockenId} - %m%n" />
+         <Policies>
+            <TimeBasedTriggeringPolicy interval="1" />
+         </Policies>
+      </RollingFile>
+   </Appenders>
+   <Loggers>
+      <Logger name="com.ibsplc.TailogIntegration" level="info" additivity="false">
+         <appender-ref ref="TailogIntegration-log"/>
+      </Logger>
+      <Logger name="com.ibsplc.TailogIntegration.controller" level="info" additivity="false">
+         <appender-ref ref="TailogIntegration-Controller-log"/>
+      </Logger>
+      <Logger name="com.ibsplc.TailogIntegration.service.impl" level="info" additivity="false">
+         <appender-ref ref="TailogIntegration-service-log"/>
+      </Logger>
+	  <Logger name="org.springframework" level="info" additivity="false">
+         <appender-ref ref="spring-log" />
+      </Logger>
+   </Loggers>
+</Configuration>
