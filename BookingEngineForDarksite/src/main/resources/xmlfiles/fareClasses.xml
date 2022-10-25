@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FareClassesList>
+
+<!-- This file is used to divide the classes into the 4 fare types.  Here the upgrade
+of each fare type is from lower to up.   Here, both the old name and new name are
+kept, since the server code refers to the old name only-->
+
+  	<FareClasses name="Go Fares" newName ="Saver" value="1">
+        <Class>L</Class>
+        <Class>W</Class>
+        <Class>G</Class>
+   	</FareClasses>
+
+   	<FareClasses name="Saver Fares" newName ="Plus" value="2">
+   		<Class>Q</Class>
+        <Class>T</Class>
+   		<Class>V</Class>
+   	</FareClasses>
+	 
+  	<FareClasses name="Plus Fares" newName ="Classic" value="3">
+        <Class>H</Class>
+        <Class>S</Class>
+   	</FareClasses>
+
+  	<FareClasses name="Flexi Fares" newName ="Select" value="4">
+        <Class>Y</Class>
+        <Class>B</Class>
+        <Class>M</Class>
+        <Class>K</Class>
+    </FareClasses>
+
+	<FareClasses name="Priority Fares" newName ="Priority" value="5">
+        <Class>Z</Class>
+        <Class>D</Class>
+   	</FareClasses>
+
+  	<FareClasses name="Business Fares" newName ="Premium" value="6">
+        <Class>C</Class>
+        <Class>J</Class>
+   	</FareClasses>
+    
+</FareClassesList>
+

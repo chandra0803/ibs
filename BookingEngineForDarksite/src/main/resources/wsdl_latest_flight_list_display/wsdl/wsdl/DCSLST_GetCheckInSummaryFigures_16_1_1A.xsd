@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.amadeus.com/ACSFRQ_16_1_1A" xmlns="http://xml.amadeus.com/ACSFRQ_16_1_1A" elementFormDefault="qualified">
+  <xs:element name="DCSLST_GetCheckInSummaryFigures">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Display Check-in Summary Figures Request
+Queries the DCS Server to retrieve passenger figures related to check in depending on the criteria contained in the message.
+Based on version 09.2, codeset updated in STX segment  A: for Airport CSF: for Check-in Summary Figures R: for retrieve Q: for query   To convey: Operating flight details Criteria for the passenger figure information to be retrieved</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="legInfo" type="FlightDetailsResponseType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">This information is used to determine which LEG is relevant for the processing of the use case: - Operating Carrier - Operating Flight Suffix - Operating Flight Number - Standard Departure Date - Boardpoint</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="allianceSelection" minOccurs="0" maxOccurs="2" type="SelectionDetailsType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">To specify for Oncarriage/Incarriage Summaries: - Alliance Filter: 9750 = AN 9749 = Alliance Name</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="codeshareCarrier" minOccurs="0" type="TransportIdentifierType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">specifies the codeshare carrier for which the request is being done.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="listIndicator" minOccurs="0" type="StatusType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Indicators for the check in summary list.  True if the summary list figures are to be calculated for each codeshare partner. 1245=BRK</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="CompanyIdentificationTypeI">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Code or name to identify a company and any associated companies.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="marketingCompany" type="AlphaNumericString_Length1To3">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This is used to convey a marketing carrier code.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FlightDetailsResponseType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To designate a flight for a given date in a reply.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="carrierDetails" type="OutboundCarrierDetailsTypeI">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Provide information on the airline of the flight</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="flightDetails" type="OutboundFlightNumberDetailstypeI">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Reference of the flight for the airline</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="departureDate" type="Date_YYYYMMDD">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Departure date</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="boardPoint" type="AlphaString_Length1To5">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Board point</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OutboundCarrierDetailsTypeI">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To identify the airline company and an associated airline company.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="marketingCarrier" type="AlphaNumericString_Length1To3">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Marketing carrier</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OutboundFlightNumberDetailstypeI">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To specify the flight number and operational suffix of the outbound flight.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="flightNumber" type="NumericInteger_Length1To4">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Flight number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="operationalSuffix" minOccurs="0" type="AlphaString_Length1To1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Flight suffix</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SelectionDetailsInformationTypeU">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To specify a selected option and associated              information</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="option" type="AlphaNumericString_Length1To3">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Option code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="optionInformation" minOccurs="0" type="AlphaNumericString_Length1To35">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Option information</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SelectionDetailsType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To specify the details for making a selection.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="selectionDetails" maxOccurs="99" type="SelectionDetailsInformationTypeU">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Selection details</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Dummy.NET" minOccurs="0" maxOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StatusDetailsType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To specify a status, the action to be taken, and an additional qualification of the status.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="indicator" type="AlphaNumericString_Length1To3">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">List of status/qualifiers</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="action" type="AlphaNumericString_Length1To3">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Action</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StatusType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To advise the requester system the status of the reply</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="statusInformation" type="StatusDetailsType">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">STATUS DETAILS</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransportIdentifierType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To specify the transport service(s) which is /are to be updated or cancelled</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="companyIdentification" type="CompanyIdentificationTypeI">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">companyIdentification</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AlphaString_Length1To5">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: a..5</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To3">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..3</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumericInteger_Length1To4">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: n..4</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:integer">
+      <xs:pattern value="-?[0-9]{1,4}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaString_Length1To1">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: a1</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To35">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..35</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="35" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Date_YYYYMMDD">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Date format: YYYYMMDD</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+<!-- SchemaRules="2010/01"-->
+<!--Created with SchemaBuilder 5.1.0 by Amadeus S.A.S.-->
+<!--"Amadeus Proprietary and Confidential Information: unauthorized use and disclosure strictly forbidden. 2010 - Amadeus s.a.s - All Rights Reserved."-->
+<!--Build Key:
+1F8B08000000000000009594514FDB3010C7DFFD292C5EF630354D1943A8921F42D3764814585BB4974A9589AFAD8563673E079121BEFBCE493A983469DB4B753E3B77F6EFFFBFCEA737D365B69EE6DBDB1B719A8ECE07E9C56094F26FA02CA0920D4F2FC69FCFC767299F2FD61FD3749CA62C5B64A1A90067DA809525084A6C2F25EA621DD3C9332AF620116E680F2B59803884508D87C3E7D224B2940A6A4C0A570ED9436D95815C7B31440841DB3D0E952E901507281E57F45B4A117C0DAC700AE8080AEB6C5C9525585AF57B65256D13DB095B1B4389AAF17A7F08E224EBDAF13BEF2AAF2148DF7069159F38BBD38A6A6869F895DD395FCAA09D1DF3DACA3A1C9CD73F40F11AA13DAE3416C661ED8163F0BA08A6E1F4CD83565423E1442EE5037E6C86894C30AE8DE1CB780FE44BBABD7F02959C30053B599B30F755C4A5C44E1A04A65CFD606005DF6BB005DCC9501CFA1DB097FF0413ECDB999728D0EBF6E5093CD2AB28F26080CA5024F7D4A179653B926F591B62E6A292EDBA95B3FD38467F29605C214D8FDCB8BD2219F3F1E6CB34CB3753A577B2086BE70C6EA6EB6DAE31481B26A414E947CA6D16D23F4254BC3B83ADD6B8B9767BAA65F7ED45B4BAB5A66125F83DF430DA78A6C1285C391F7EE1A38723DD2BC3C8F4F75C4EAA6BD33BC7FE17A2CA691B6E207472B466F3CE857784DA753470C2BA2744A21847291DA6A33E8733E733A3A976EFD8E8055D00E6E424EA4DA6EC2862297D8875EFAD2E7468FA87042F2D9AD69FC447106B1CF695D7D962F8A2C0687A862403BD26B4CBE2F5D4FBF121B34C8E33D3D5A44C8BAA9D646D0BF68C26DCD6A1AAC3CC19055EC4046383C1A2C3F801B97E9B93C1807590C42863EFFA8BEC2EDBE693D5F56ABD1D9D9F91AD4BA9ADA00C83E78A14DB4ADCE6D3B9582FEFA74785B8F420C5E8343D26443659CD965F594533A1F1402A77EC3B81C439454F3AAA263E757064CB51F48DE71026F10FE4CAAEEA92903633BDA7D14576944D901F2B239B3F9E5AC619C4C07A6388D188FD04EF1FEFCB27050000
+-->
+

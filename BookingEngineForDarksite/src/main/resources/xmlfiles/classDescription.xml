@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassesList>
+
+<!-- This file is used to show the description of the classes and also the subdivison. 
+ The value of 1 indicates that these subclasses are a part of economy.  The value of
+ 2 indicates that the subclasses are part of business and value of 3 indicates that
+ the subclasses are part of first class -->
+
+  <Classes name="Economy Saver" value="1">
+        <Class>G</Class>
+        <Class>W</Class>
+        <Class>L</Class>
+  </Classes>
+
+  <Classes name="Economy Plus" value="2">
+        <Class>V</Class>
+        <Class>Q</Class>
+        <Class>S</Class>
+        <Class>T</Class>
+  </Classes>
+
+  <Classes name="Economy Select" value="3">
+        <Class>M</Class>
+        <Class>B</Class>
+        <Class>H</Class>
+        <Class>K</Class>
+        <Class>Y</Class>
+  </Classes>
+  
+  <Classes name="Premium Economy" value="3">
+        <Class>O</Class>
+        <Class>E</Class>
+  </Classes>
+  
+  <Classes name="Priority" value="3">
+        <Class>D</Class>
+        <Class>Z</Class>
+  </Classes>
+  
+  <Classes name="Business" value="3">
+        <Class>J</Class>
+        <Class>C</Class>
+  </Classes>
+   
+</ClassesList>
+

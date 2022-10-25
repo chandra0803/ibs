@@ -1,0 +1,7 @@
+<bindings
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    wsdlLocation="1ASIWDCR4Z_PDT_20190614_073400.wsdl"
+    xmlns="http://java.sun.com/xml/ns/jaxws">
+        <!-- Disable default wrapper style -->
+        <enableWrapperStyle>false</enableWrapperStyle>       
+</bindings>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="ALL" monitorInterval="5">
+   <Properties>
+      <Property name="log-path">D:\BookingEngineLogs</Property>
+   </Properties>
+   <!-- file appender -->
+   <Appenders>
+      <RollingFile name="booking-log" fileName="${log-path}/booking.log" immediateFlush="true" append="true" filePattern="${log-path}/backup/%d{ddMMyyyy}_booking.log">
+         <!-- log pattern -->
+         <PatternLayout pattern="%X{threadId} %d{yyyy-MM-dd HH:mm:ss} [%-4r] [%-5p] [%c:%L] ---!!! %X{tockenId} - %m%n" />
+								 
+         <Policies>
+            <TimeBasedTriggeringPolicy interval="1" />
+         </Policies>
+      </RollingFile>
+      <RollingFile name="spring-log" fileName="${log-path}/spring.log" immediateFlush="true" append="true" filePattern="${log-path}/backup/%d{ddMMyyyy}_spring.log">
+         <!-- log pattern -->
+         <PatternLayout pattern="%X{threadId} %d{yyyy-MM-dd HH:mm:ss} %-4r [%-5p] [%c] - %X{tockenId} - %m%n" />
+         <Policies>
+            <TimeBasedTriggeringPolicy interval="1" />
+         </Policies>
+      </RollingFile>
+      <RollingFile name="hibernate-log" fileName="${log-path}/hibernate.log" immediateFlush="true" append="true" filePattern="${log-path}/backup/%d{ddMMyyyy}_hibernate.log">
+         <!-- log pattern -->
+         <PatternLayout pattern="%X{threadId} %d{yyyy-MM-dd HH:mm:ss} %-4r [%-5p] [%c] - %X{tockenId} - %m%n" />
+         <Policies>
+            <TimeBasedTriggeringPolicy interval="1" />
+         </Policies>
+      </RollingFile>
+      
+      <RollingFile name="framework-log" fileName="${log-path}/framework.log" immediateFlush="true" append="true" filePattern="${log-path}/backup/%d{ddMMyyyy}_framework.log">
+         <!-- log pattern -->
+         <PatternLayout pattern="%X{threadId} %d{yyyy-MM-dd HH:mm:ss} %-4r [%-5p] [%c] - %X{tockenId} - %m%n" />
+         <Policies>
+            <TimeBasedTriggeringPolicy interval="1" />
+         </Policies>
+      </RollingFile>
+      <RollingFile name="reservation-log" fileName="${log-path}/reservation.log" immediateFlush="true" append="true" filePattern="${log-path}/backup/%d{ddMMyyyy}_reservation.log">
+         <!-- log pattern -->
+         <PatternLayout pattern="%X{threadId} %d{yyyy-MM-dd HH:mm:ss} %-4r [%-5p] [%c] - %X{tockenId} - %m%n" />
+         <Policies>
+            <TimeBasedTriggeringPolicy interval="1" />
+         </Policies>
+      </RollingFile>
+      <RollingFile name="corporate-log" fileName="${log-path}/corporate.log" immediateFlush="true" append="true" filePattern="${log-path}/backup/%d{ddMMyyyy}_corporate.log">
+         <!-- log pattern -->
+         <PatternLayout pattern="%X{threadId} %d{yyyy-MM-dd HH:mm:ss} %-4r [%-5p] [%c] - %X{tockenId} - %m%n" />
+         <Policies>
+            <TimeBasedTriggeringPolicy interval="1" />
+         </Policies>
+      </RollingFile>
+      <RollingFile name="eai-log" fileName="${log-path}/eai.log" immediateFlush="true" append="true" filePattern="${log-path}/backup/%d{ddMMyyyy}_eai.log">
+         <!-- log pattern -->
+         <PatternLayout pattern="%X{threadId} %d{yyyy-MM-dd HH:mm:ss} %-4r [%-5p] [%c] - %X{tockenId} - %m%n" />
+         <Policies>
+            <TimeBasedTriggeringPolicy interval="1" />
+         </Policies>
+      </RollingFile>
+      <RollingFile name="tax_invoice-log" fileName="${log-path}/tax_invoice.log" immediateFlush="true" append="true" filePattern="${log-path}/backup/%d{ddMMyyyy}_tax_invoice.log">
+         <!-- log pattern -->
+         <PatternLayout pattern="%X{threadId} %d{yyyy-MM-dd HH:mm:ss} %-4r [%-5p] [%c] - %X{tockenId} - %m%n" />
+         <Policies>
+            <TimeBasedTriggeringPolicy interval="1" />
+         </Policies>
+      </RollingFile>
+       <RollingFile name="viewtrips-log" fileName="${log-path}/viewtrips.log" immediateFlush="true" append="true" filePattern="${log-path}/backup/%d{ddMMyyyy}_viewtrips.log">
+         <!-- log pattern -->
+         <PatternLayout pattern="%X{threadId} %d{yyyy-MM-dd HH:mm:ss} %-4r [%-5p] [%c] - %X{tockenId} - %m%n" />
+         <Policies>
+            <TimeBasedTriggeringPolicy interval="1" />
+         </Policies>
+      </RollingFile>
+   </Appenders>
+   <Loggers>
+      <Logger name="com.ibsplc" level="debug" additivity="false">
+         <appender-ref ref="booking-log"/>
+      </Logger>
+      <Logger name="com.ibsplc.framework" level="debug" additivity="false">
+         <appender-ref ref="framework-log"/>
+      </Logger>
+      <Logger name="org.springframework" level="info" additivity="false">
+         <appender-ref ref="spring-log" />
+      </Logger>
+      <Logger name="org.hibernate" level="debug" additivity="false">
+         <appender-ref ref="hibernate-log" />
+      </Logger>
+       <Logger name="com.ibsplc.reservation" level="debug" additivity="false">
+         <appender-ref ref="reservation-log"/>
+      </Logger>
+      <Logger name="com.ibsplc.corporate" level="debug" additivity="false">
+         <appender-ref ref="corporate-log"/>
+      </Logger>
+      <Logger name="com.ibsplc.eai" level="debug" additivity="false">
+         <appender-ref ref="eai-log"/>
+      </Logger>
+      <Logger name="com.ibsplc.requesttaxinvoice" level="debug" additivity="false">
+         <appender-ref ref="tax_invoice-log"/>
+      </Logger>
+      <Logger name="com.ibsplc.email" level="debug" additivity="false">
+         <appender-ref ref="tax_invoice-log"/>
+      </Logger>
+      <Logger name="com.ibsplc.pdf" level="debug" additivity="false">
+         <appender-ref ref="tax_invoice-log"/>
+      </Logger>
+      <Logger name="com.ibsplc.viewmytrips" level="debug" additivity="false">
+         <appender-ref ref="viewtrips-log"/>
+      </Logger>
+   </Loggers>
+</Configuration>

@@ -1,0 +1,720 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+
+<body>
+ <center>
+ <table><tr><td width="700px" style="border: 2px solid #FFFFFF;background-color:#FFFFFF;">
+    <div class="email_main_div" style="width:100%;margin-top:auto;margin-bottom:auto;margin-right:auto;background-color:#FFFFFF;min-height:500px;">
+    <table class="email_table" style="color:#333;font-family:sans-serif;font-size:15px;font-weight:300;text-align:center;border-collapse:separate;border-spacing:0;width:100%;margin-top:6px;margin-bottom:6px;margin-right:auto;margin-left:auto;box-shadow:none;">
+      <tr>
+        <td width="250px;" style="text-align:left;padding-top:10px;padding-bottom:10px;padding-right:10px;">
+          <!-- <img src="./airlink_logo_03.png"/> -->
+          <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAAAzCAYAAADb5uc+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4RpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDplZDEzOWNjYS0wNWE2LTk2NDctOWFhNi0yMDk5ODYyYjZkY2EiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NEQ2NDQxMzczOTYyMTFFNzlBMTVBRDBCQTBFNTQzMkUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NEQ2NDQxMzYzOTYyMTFFNzlBMTVBRDBCQTBFNTQzMkUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OTcyOGM3ZGUtZTFmYi0wODQ2LThmYWUtNDQzOTMxOGNjM2M4IiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6NjFlMzcxZjYtMmYxNC0xMWU3LTk1NmUt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"/>  -->
+         <!-- <img src="https://www.flyairlink.com/themes/pegasus/assets/images/airlink_logo_03.png"/> -->
+		 <!-- <img height="80px" width="220px" src="https://www.flyairlink.com/themes/pegasus/assets/images/taxInvoiceLogo.png"/>-->
+		
+		<img height="80px" width="220px" src="https://www.flyairlink.com/themes/pegasus/assets/images/airlink_logo_sunbird.png" alt = "airlink_logo_sunbird"/>
+		   				</td>
+  		<td align="right" style="padding-top:10px;">
+		 <h1 style="font-family:sans-serif;color: #002b80;font-size:22px;float:right;display: inline-block;padding-top:10px;">Tax Invoice</h1>
+       
+        </td>	
+		<!--<td width="400px;" style="text-align:center;padding-top:80px;padding-bottom:10px;padding-right:40px;padding-left:10px;">
+           <h1 style="width:695px;text-align: right;padding-right:15px;font-family:sans-serif;color: #005eb8;font-size:22px;">Tax Invoice</h1>
+        </td> --> 
+		
+      </tr>
+	  
+    </table>
+	
+   <!-- <h1 style="width:695px;text-align: right;font-family:sans-serif;color: #005eb8;font-size:22px;">Tax Invoice</h1> -->
+
+    <table class="email_table" style="margin-top:14px;color:#333;font-family:sans-serif;font-size:15px;font-weight:300;text-align:center;border-collapse:separate;border-spacing:0;width:100%;margin-bottom:6px;margin-right:auto;margin-left:auto;box-shadow:none;color: #002b80;">
+      <tr>
+        <td width="450px;" style="text-align:left;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:40px; line-height: 25px">
+          <strong style="font-weight:bold;color: #002b80;">${customerName}</strong>
+          <br /> ${corporateName}
+          <br /> ${postalAddress}
+          #if ($vatNumber)
+          <br /> VAT No: ${vatNumber}
+          #end
+          #if($costCentre)
+          <br/>Cost Centre No: ${costCentre}
+          #end
+          #if($orderNumber)
+          <br/>Order No: ${orderNumber}
+          #end
+        <br />
+        </td>
+        <td width="250px;" style="text-align:left;padding-top:10px;padding-bottom:10px;padding-left:60px;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;line-height: 25px;color: #002b80;">
+          <strong style="font-weight:bold;">Booking Reference : </strong>${bookingReference}
+          <br />
+          <strong style="font-weight:bold;">Invoice Date : </strong>${invoiceDate}
+          <br />
+        </td>
+      </tr>
+    </table>
+	<!--[if mso]>
+	<br/>
+	<![endif]-->
+	
+    <table bgcolor="#FFFFFF" class="item_table" style="color:#333;font-family:sans-serif;font-size:15px;font-weight:300;border-collapse:collapse;border: 1px solid #002b80;border-spacing:0;width:100%;margin-top:50px;margin-bottom:50px;margin-right:auto;margin-left:auto;box-shadow:0 4px 8px 0 rgba(0, 0, 0, .16);text-align:left;">
+  
+      <thead>
+        <tr>
+          <th style="text-align:left;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color:#002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">Description</p></th>
+          <th style="text-align:center;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color:#002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">Transaction Date</p></th>
+          <th style="text-align:center;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color:#002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">Amount</p></th>
+        </tr>
+      </thead>
+      <tbody style="font-size:13px;">
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">Invoice number: <strong style="padding-right:15px;font-weight:bold;">${taxInvoiceNumber}</strong></td>
+          <td style="text-align:center;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${taxInvoiceDate}</td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"><strong style="font-weight:bold;">${totalBookingAmount} ${currency}</strong></td>
+        </tr>
+        <!-- Rates other than EMD amount displayed if changed -->
+        #if ($isTicketChanged)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">Base Fare</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>         
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${baseFare} ${currency}</td>
+        </tr>
+        #if ($evTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">EV - Civil Aviation Tax</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${evTax} ${currency}</td>
+        </tr>
+        #end
+        #if ($zaTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">ZA - Passenger Service Charge</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${zaTax} ${currency}</td>
+        </tr>
+        #end
+        #if ($umTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">UM - ACS Charges</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${umTax} ${currency}</td>
+        </tr>
+        #end
+        #if ($seatRequest > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">Seat Request per Passenger per seat</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${seatRequest} ${currency}</td>
+        </tr>
+        #end
+        #if ($smsCharge > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">SMS per passenger</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${smsCharge} ${currency}</td>
+        </tr>
+        #end
+        #if ($yqTax > 0)
+        <tr>
+        #if ($isItineraryDomestic)
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">YQ - Fuel Surcharge (Excl. VAT)</td>
+        #else
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">YQ - Fuel Surcharge</td>
+        #end  
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${yqTax} ${currency}</td>
+        </tr>
+        #end
+        
+        <!-- Adding new tax code -->
+        #if ($wcTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">WC - Air Passenger Tax</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${wcTax} ${currency}</td>
+        </tr>
+        #end
+        #if ($xiTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">XI - Aviation Infrastructural Development Fund Levy fee</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${xiTax} ${currency}</td>
+        </tr>
+        #end
+        #if ($cbTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">CB - Passenger Service Charge</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${cbTax} ${currency}</td>
+        </tr>
+        #end
+        
+           #if ($aoTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">AO - EMBARKATION TAX</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${aoTax} ${currency}</td>
+    </tr>
+ #end
+ 
+  #if ($mbTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">MB - SECURITY TAX</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${mbTax} ${currency}</td>
+    </tr>
+ #end
+ <!--Adding new tax code for Uganda A-9781-Start-->
+         #if ($ugTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">UG - Security Charge</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${ugTax} ${currency}</td>
+        </tr>
+        #end
+        #if ($ulTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">UL - Passenger Service Charge</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${ulTax} ${currency}</td>
+        </tr>
+        #end
+        <!--Adding new tax code for Uganda A-9781-End-->
+        
+        
+#if ($lfTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">LF - Passenger Tax </td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${lfTax} ${currency}</td>
+    </tr>
+ #end
+
+#if ($oxTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">OX - Airport Security</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${oxTax} ${currency}</td>
+    </tr>
+ #end 
+ 
+ #if ($h2Tax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">H2 - Passenger Safety Charge</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${h2Tax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($jiTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">JI - Air passenger service Charge APSC</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${jiTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($k2Tax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">K2 - Cute and Cuss Charge</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${k2Tax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($qjTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">QJ - Security Charge</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${qjTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($rmTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">RM - Aviation Infrastructural Development charge</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${rmTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($bwTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">BW - Departure Tax</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${bwTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($h1Tax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">H1 - Airport Security Charge</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${h1Tax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($naTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">NA - Passenger Service Charge</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${naTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ 
+ 
+
+#if ($a5Tax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">A5 - Aviation Security Charge</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${a5Tax} ${currency}</td>
+    </tr>
+ #end
+
+#if ($g9Tax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">G9 - Airport Infrastructure development charge</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${g9Tax} ${currency}</td>
+    </tr>
+ #end 
+ 
+ #if ($mgdTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">MG - Passenger Tax Departures</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${mgdTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($mgaTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">MG - Passenger Tax Arrivals</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${mgaTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($o3Tax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">O3 - Secondary Airport Infrastructure charge</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${o3Tax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($jvTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">JV - Solidarity Tax International</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${jvTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($c6Tax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">C6 - Passenger Service and Security Charge</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${c6Tax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($vmTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">VM - Passenger Service Charge - International</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${vmTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($adTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">AD - Value added tax</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${adTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($cdaeTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">CD (AE) 008 - Embarkation and Security Tax Domestic and International </td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${cdaeTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ 
+#if ($cd010Tax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">CD (TA) 010 - Tourist Development fund FPT Domestic and International </td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${cd010Tax} ${currency}</td>
+    </tr>
+ #end
+
+#if ($cd011Tax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">CD (TA) 011 - Tourist Development fund FPT Domestic and International </td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${cd011Tax} ${currency}</td>
+    </tr>
+ #end 
+ 
+ #if ($k8Tax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">K8 - Safety and Security Supervision Charge</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${k8Tax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($lwTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">LW - Passenger Service Charge Departures</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${lwTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($e4Tax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">E4 - Infrastructure Tax</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${e4Tax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($hyTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">HY - Aviation Tax</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${hyTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($lqTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">LQ - Stamp Tax</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${lqTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($m4Tax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">M4 - Security Tax</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${m4Tax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($mnTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">MN - Airport Service Charge Zanzibar</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${mnTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($p9Tax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">P9 - Airport Security Charge</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${p9Tax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($tzTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">TZ - Airport Tax</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${tzTax} ${currency}</td>
+    </tr>
+ #end
+
+#if ($lmTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">LM - Passenger Service Charge</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${lmTax} ${currency}</td>
+    </tr>
+ #end 
+ 
+ #if ($vldTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">VL - Essential Infrastructure Charge Departures</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${vldTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($vlaTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">VL - Essential Infrastructure Charge Arrivals</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${vlaTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($mgTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">MG - Passenger Tax Arrivals & Departures</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${mgTax} ${currency}</td>
+    </tr>
+ #end
+ 
+ #if ($vlTax > 0)
+    <tr>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">VL - Essential Infrastructure Charge Arrivals & Departures</td>
+     <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+     <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${vlTax} ${currency}</td>
+    </tr>
+ #end
+
+        <!-- End of new tax code -->
+        
+        #if ($zvTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">ZV - Value Added Tax</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${zvTax} ${currency}</td>
+        </tr>
+        #end
+        #if ($duTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">DU - Change Fee</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${duTax} ${currency}</td>
+        </tr>
+        #end
+         #if ($penalty > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"><strong style="padding-right:15px;font-weight:bold;">Penalty Fee</strong></td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"><strong style="font-weight:bold;">${penalty} ${currency}</strong></td>
+        </tr>
+        #end
+        #if ($totalFare)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"><strong style="padding-right:15px;font-weight:bold;">Total Fare</strong></td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"><strong style="font-weight:bold;">${totalFare} ${currency}</strong></td>
+        </tr>
+        #end
+        #end
+        <!-- EMD rates shown if change exists -->
+        #if ($isEmdChanged and $isNewEmdNumbersPresent)
+        #if ($emdAmount > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"><strong style="padding-right:15px;font-weight:bold;">Additional Services</strong></td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"><strong style="font-weight:bold;">${emdAmount} ${currency}</strong></td>
+        </tr>
+        #end
+        #if ($emdBaseFare > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">Base Fare</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${emdBaseFare} ${currency}</td>
+        </tr>
+        #end
+        #if ($emdZvTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">ZV - Value Added Tax</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${emdZvTax} ${currency}</td>
+        </tr>
+        #end
+        #if ($emdEvTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">EV - Civil Aviation Tax</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${emdEvTax} ${currency}</td>
+        </tr>
+        #end
+        #if ($emdZaTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">ZA - Passenger Service Charge</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${emdZaTax} ${currency}</td>
+        </tr>
+        #end
+        #if ($emdUmTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">UM - ACS Charges</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${emdUmTax} ${currency}</td>
+        </tr>
+        #end
+        #if ($emdYqTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">YQ - Fuel Surcharge</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${emdYqTax} ${currency}</td>
+        </tr>
+        #end
+        #if ($emdDuTax > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">DU - Change Fee</td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">${emdDuTax} ${currency}</td>
+        </tr>
+        #end
+        #if ($emdTotalFare > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"><strong style="padding-right:15px;font-weight:bold;">Total - Requested Services</strong></td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;"><strong style="font-weight:bold;">${emdTotalFare} ${currency}</strong></td>
+        </tr>
+        #end
+        #end
+        #if ($totalAmount > 0)
+        <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: white;background-color: #002b80;"><strong style="padding-right:15px;font-weight:bold;">Total Amount Paid</strong></td>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: white;background-color: #002b80;"></td>
+          <td style="text-align:right;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: white;background-color: #002b80;"><strong style="font-weight:bold;">${totalAmount} ${currency}</strong></td>
+        </tr>
+        #end
+      </tbody>
+    </table>
+
+	<!--[if mso]>
+	<br/>
+	<![endif]-->
+	<!-- Displaying Itinerary details -->
+    <table bgcolor="#FFFFFF" class="item_table" style="color:#333;font-family:sans-serif;font-size:15px;font-weight:300;border-collapse:collapse;border: 1px solid #002b80;border-spacing:0;width:100%;margin-top:50px;margin-bottom:50px;margin-right:auto;margin-left:auto;box-shadow:0 4px 8px 0 rgba(0, 0, 0, .16);text-align:left;">
+      <thead>
+        <tr>
+          <th style="text-align:left;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">Itinerary Details</p></th>
+          <th style="text-align:center;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">Depart</p></th>
+          <th style="text-align:center;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">Arrive</p></th>
+          <th style="text-align:center;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">From</p></th>
+		  <th style="text-align:center;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">To</p></th>
+		  <th style="text-align:center;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">Flight</p></th>
+		   
+        </tr>
+      </thead>
+      <tbody style="font-size:13px;">
+       #foreach ($itinerary in $itineraryDetails)
+       <tr>
+          <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">$itinerary.departureDate</td>
+          <td style="text-align:center;border: 1px solid #002b80;border-collapse: collapse;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">$itinerary.departureTime</td>
+          <td style="text-align:center;border: 1px solid #002b80;border-collapse: collapse;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">$itinerary.arrivalTime</td>
+          <td style="text-align:center;border: 1px solid #002b80;border-collapse: collapse;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">$itinerary.from</td>
+		  <td style="text-align:center;border: 1px solid #002b80;border-collapse: collapse;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">$itinerary.to</td>
+          <td style="text-align:center;border: 1px solid #002b80;border-collapse: collapse;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">$itinerary.flight</td>
+        </tr>
+       #end
+      </tbody>
+    </table>
+
+	<!--[if mso]>
+	<br/>
+	<![endif]-->
+	<!-- Displaying Passenger Details -->
+    <table bgcolor="#FFFFFF" class="item_table" style="color:#333;font-family:sans-serif;font-size:15px;font-weight:300;border-collapse:collapse;border: 1px solid #002b80;border-spacing:0;width:100%;margin-top:50px;margin-bottom:50px;margin-right:auto;margin-left:auto;box-shadow:0 4px 8px 0 rgba(0, 0, 0, .16);text-align:left;">
+      <thead>
+        <tr>
+          <th style="text-align:left;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">Passengers</p></th>
+		  <th style="text-align:center;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">Type</p></th>
+          <th style="text-align:center;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">Electronic Ticket Numbers</p></th>
+        </tr>
+      </thead>
+      <tbody style="font-size:13px;">    
+        #foreach ($passenger in $passengerDetails)
+        <tr>
+           <td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">$passenger.paxName</td>
+           <td style="text-align:center;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">$passenger.paxType</td>
+		   <td style="text-align:center;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">$passenger.eTicketNumber</td>
+       	</tr>
+        #end
+      </tbody>
+    </table>
+    
+	
+    <!-- Displaying Ticket Numbers Below-->
+    <!-- #if ($ticketNumbers) -->
+	<!--[if mso]>
+	<br/>
+	<![endif]-->
+   <!-- <table bgcolor="#FFFFFF" class="item_table" style="color:#333;font-family:sans-serif;font-size:15px;font-weight:300;border-collapse:collapse;border: 1px solid #002b80;border-spacing:0;width:100%;margin-top:50px;margin-bottom:50px;margin-right:auto;margin-left:auto;box-shadow:0 4px 8px 0 rgba(0, 0, 0, .16);text-align:left;">
+      <thead>
+        <tr>
+          <th style="text-align:left;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">Electronic Ticket Numbers</p></th>
+        </tr>
+      </thead>
+      <tbody style="font-size:13px;">
+      #foreach ($ticketNumber in $ticketNumbers)
+      	<tr>
+      		<td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">$ticketNumber</td>
+      	</tr>
+      #end
+      </tbody>
+    </table> 
+    #end -->
+    
+	
+    <!-- Displaying EMD Numbers Below-->
+    #if ($emdNumbers)
+	<!--[if mso]>
+	<br/>
+	<![endif]-->
+    <table bgcolor="#FFFFFF" class="item_table" style="color:#333;font-family:sans-serif;font-size:15px;font-weight:300;border-collapse:collapse;border: 1px solid #002b80;border-spacing:0;width:99%;margin-top:50px;margin-bottom:50px;margin-right:auto;margin-left:auto;box-shadow:0 4px 8px 0 rgba(0, 0, 0, .16);text-align:left;">
+      <thead>
+        <tr>
+          <th style="text-align:left;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">Electronic Miscellaneous Document Numbers</p></th>
+        </tr>
+      </thead>
+      <tbody style="font-size:13px;">
+      	#foreach ($emd in $emdNumbers)
+      	<tr>
+      		<td style="text-align:left;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;">$emd</td>
+      	</tr>
+      	#end
+      </tbody>
+    </table>
+    #end
+
+	<!--[if mso]>
+	<br/>
+	<![endif]-->
+    <table bgcolor="#FFFFFF" class="item_table" style="color:#333;font-family:sans-serif;font-size:15px;font-weight:300;border-collapse:collapse;border: 1px solid #002b80;border-spacing:0;width:99%;margin-top:50px;margin-bottom:50px;margin-right:auto;margin-left:auto;box-shadow:0 4px 8px 0 rgba(0, 0, 0, .16);text-align:left;">
+      <thead>
+        <tr style="font-size:13px;">
+          <th style="text-align:center;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">AIRLINK</p></th>
+          <th style="text-align:center;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">COMPANY REG NO</p></th>
+          <th style="text-align:center;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">E-MAIL</p></th>
+          <th style="text-align:center;font-weight:bold;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;color: white;background-color: #002b80;"><p style="margin: 0; padding: 0;">VAT NUMBER</p></th>
+        </tr>
+      </thead>
+      <tbody style="font-size:13px;">
+        <tr>
+          <td style="text-align:center;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;font-size:11px;">PO Box 7529, Bonaero Park</td>
+          <td style="text-align:center;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;font-size:11px;">1969/002554/07</td>
+          <td style="text-align:center;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;font-size:11px;">info@flyairlink.com</td>
+          <td style="text-align:center;border: 1px solid #002b80;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;color: #002b80;font-size:11px;">4910126434</td>
+        </tr>
+			 
+      </tbody>	
+	 <tfoot align="center">
+			<tr>
+				<th colspan="4"style="width:100%;;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border: 1px solid #002b80;margin-top:10px;font-family:sans-serif;font-size:10px;text-align:center;color: white;background-color: #002b80;">Airlink (Pty) Ltd | No.3, Greenstone Hill Office Park, Emerald Boulevard, Greenstone Hill, Modderfontein, South Africa.</th>
+			</tr>
+		</tfoot>	
+    </table>
+   
+  </div>
+ </td></tr></table>
+ </center>
+</body>
+
+</html>
