@@ -1,0 +1,180 @@
+WSO2
+---
+Staging server - 10.130.212.10
+ibsuser/#!bsu$er#123
+
+$ ssh ibsuser@10.130.212.10
+ 
+ 
+WSO2 Servers
+**************
+10.130.212.10 - Stage
+10.130.212.4 - Production
+10.130.212.3 - Production
+USERNAME: ibsuser
+PASSWORD: #!bsu$er#123
+Username:root Pass: #Local#123
+ssh root@10.130.212.4
+ssh root@10.130.212.3
+
+WSO2 server config path - /projects/airlink/wso2ei-6.1.1/wso2/business-process/bin/wso2server.sh
+ each process command 
+ ------------------
+ps -o pid,user,%mem,command ax | sort -b -k3 -r | grep "/opt/jdk1.8.0_201/bin/java"
+  cat /proc/meminfo
+  free -g or free -m
+Space command
+-------------
+df -h
+du -h /projects/airlink/
+
+ each process command 
+ ------------------
+  ps -o pid,user,%mem,command ax | sort -b -k3 -r
+  
+ port
+-----
+netstat -tulpn
+
+
+ Staging
+--------- 
+     PID 	USER     	%MEM 				COMMAND
+ 72554 		ibsuser  	 4.1		/opt/jdk1.8.0_201/jre/bin/java -Djava.util.logging.config.file=/projects/airlink/apache-tomcat-9.0.30/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -classpath /projects/airlink/apache-tomcat-9.0.30/bin/bootstrap.jar:/projects/airlink/apache-tomcat-9.0.30/bin/tomcat-juli.jar -Dcatalina.base=/projects/airlink/apache-tomcat-9.0.30 -Dcatalina.home=/projects/airlink/apache-tomcat-9.0.30 -Djava.io.tmpdir=/projects/airlink/apache-tomcat-9.0.30/temp org.apache.catalina.startup.Bootstrap start
+ 
+ 51010 root      1.7 /opt/jdk1.8.0_201/bin/java -Djava.util.logging.config.file=logging.properties -Djava.security.auth.login.config=/projects/airlink/apache-activemq-5.15.2//conf/login.config -Djava.awt.headless=true -Djava.io.tmpdir=/projects/airlink/apache-activemq-5.15.2//tmp -Dorg.apache.activemq.SERIALIZABLE_PACKAGES=* -Dactivemq.classpath=/projects/airlink/apache-activemq-5.15.2//conf:/projects/airlink/apache-activemq-5.15.2//../lib/: -Dactivemq.home=/projects/airlink/apache-activemq-5.15.2/ -Dactivemq.base=/projects/airlink/apache-activemq-5.15.2/ -Dactivemq.conf=/projects/airlink/apache-activemq-5.15.2//conf -Dactivemq.data=/projects/airlink/apache-activemq-5.15.2//data -jar /projects/airlink/apache-activemq-5.15.2//bin/activemq.jar start
+ 
+ 95724 		root     17.5 			/usr/sbin/rsyslogd -n
+ 
+ 23306 		root     10.7 			/opt/jdk1.8.0_201/bin/java -Xbootclasspath/a: -Xms1024m -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/projects/airlink/wso2ei-6.1.5/repository/logs/heap-dump.hprof -Dcom.sun.management.jmxremote -classpath  
+ 
+ 
+ Production
+ ----------
+  Total memory
+  --------
+  [root@WS02 ~]# free -m
+              total        used        free      shared  buff/cache   available
+Mem:          15869        2366         537         841       12965       12127
+Swap:          2047          70        1977
+
+each process
+---------------
+    PID USER     %MEM COMMAND
+ 20643 root      1.7 /opt/jdk1.8.0_181/bin/java -Djava.util.logging.config.file=logging.properties -Djava.security.auth.login.config=/projects/airlink/apache-activemq-5.15.2//conf/login.config -Djava.awt.headless=true -Djava.io.tmpdir=/projects/airlink/apache-activemq-5.15.2//tmp -Dactivemq.classpath=/projects/airlink/apache-activemq-5.15.2//conf:/projects/airlink/apache-activemq-5.15.2//../lib/: -Dactivemq.home=/projects/airlink/apache-activemq-5.15.2/ -Dactivemq.base=/projects/airlink/apache-activemq-5.15.2/ -Dactivemq.conf=/projects/airlink/apache-activemq-5.15.2//conf -Dactivemq.data=/projects/airlink/apache-activemq-5.15.2//data -jar /projects/airlink/apache-activemq-5.15.2//bin/activemq.jar start
+ 82354 root     10.9 /opt/jdk1.8.0_181/bin/java -Xbootclasspath/a: -Xms2048m -Xmx2048m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/projects/airlink/wso2ei-6.1.1/repository/logs/heap-dump.hprof -Dcom.sun.management.jmxremote -classpath /opt/jdk1.8.0_181/lib/tools.jar:/projects/airlink/wso2ei-6.1.1/bin/org.wso2.carbon.bootstrap-4.4.16.jar:/projects/airlink/wso2ei-6.1.1/bin/tcpmon-1.0.jar:/projects/airlink/wso2ei-6.1.1/bin/tomcat-juli-7.0.75.jar:/projects/airlink/wso2ei-6.1.1/wso2/lib/commons-lang-2.6.0.wso2v1.jar -Djava.endorsed.dirs=/projects/airlink/wso2ei-6.1.1/wso2/lib/endorsed:/opt/jdk1.8.0_181/jre/lib/endorsed:/opt/jdk1.8.0_181/lib/endorsed -Djava.io.tmpdir=/projects/airlink/wso2ei-6.1.1/wso2/tmp -Dcatalina.base=/projects/airlink/wso2ei-6.1.1/wso2/lib/tomcat -Dwso2.server.standalone=true -Dcarbon.registry.root=/ -Djava.command=/opt/jdk1.8.0_181/bin/java -Dcarbon.home=/projects/airlink/wso2ei-6.1.1 -Dlogger.server.name=EI-Core -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dcarbon.config.dir.path=/projects/airlink/wso2ei-6.1.1/conf -Dcarbon.components.dir.path=/projects/airlink/wso2ei-6.1.1/wso2/components -Dcarbon.extensions.dir.path=/projects/airlink/wso2ei-6.1.1/extensions -Dcarbon.dropins.dir.path=/projects/airlink/wso2ei-6.1.1/dropins -Dcarbon.external.lib.dir.path=/projects/airlink/wso2ei-6.1.1/lib -Dcarbon.patches.dir.path=/projects/airlink/wso2ei-6.1.1/patches -Dcarbon.servicepacks.dir.path=/projects/airlink/wso2ei-6.1.1/servicepacks -Dcarbon.internal.lib.dir.path=/projects/airlink/wso2ei-6.1.1/wso2/lib -Dei.extendedURIBasedDispatcher=org.wso2.carbon.integrator.core.handler.IntegratorStatefulHandler -Djava.util.logging.config.file=/projects/airlink/wso2ei-6.1.1/conf/etc/logging-bridge.properties -Dcomponents.repo=/projects/airlink/wso2ei-6.1.1/wso2/components/plugins -Dconf.location=/projects/airlink/wso2ei-6.1.1/conf -Dcom.atomikos.icatch.file=/projects/airlink/wso2ei-6.1.1/wso2/lib/transactions.properties -Dcom.atomikos.icatch.hide_init_file_path=true -Dorg.apache.jasper.compiler.Parser.STRICT_QUOTE_ESCAPING=false -Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true -Dcom.sun.jndi.ldap.connect.pool.authentication=simple -Dcom.sun.jndi.ldap.connect.pool.timeout=3000 -Dorg.terracotta.quartz.skipUpdateCheck=true -Djava.security.egd=file:/dev/./urandom -Dfile.encoding=UTF8 -Djava.net.preferIPv4Stack=true -Dcom.ibm.cacheLocalHost=true -DworkerNode=false -Dorg.wso2.ignoreHostnameVerification=true org.wso2.carbon.bootstrap.Bootstrap
+  1126 root      0.1 /usr/sbin/rsyslogd -n
+
+
+  
+  
+ Flight search request body
+ -------------------
+ {"country":"ZA","language":"EN","product":"LRB","isMobileDevice":"false","tripType":"R","departureCity":"JNB","destinationCity":"CPT","departureDate":"26-08-2022","dateFlexible":"","adultCount":1,"youngAdultCount":0,"childCount":0,"infantCount":0,"cabinClass":0,"amadeusReturnUrl":"","promoCode":"","clientSessionId":"123","returnDate":"31-08-2022"}
+  Mvn build for spring-boot
+ ---------------------------
+you can change the war to jar in pom and go to command prompt of project then 
+mvn spring-boot:run 
+mvn clean package 
+java -jar target/notificationhub.jar 
+
+Query
+------
+getFlexPricerDetails.query = SELECT * FROM airlink_flex_pricer WHERE flex_config_name=? and route_type=?
+getRouteConfigEntities.query = select flex_config_name,is_route_operational,is_airlink_route,is_set_direct_trip from airlink_route_config where origin=? and destination=? and product_master_code=?;
+
+url - http://localhost:9092/BookingEngine/flightSearch
+request param:
+ {"country": "ZA","language": "EN","product": "LRB","isMobileDevice": "false","clientSessionId": "123","pnrNumber": "L5L9A3","surName": "test","adultCount": "4","cabinClass": "X", "departureCity" : "JNB", "tripType" : "yes", "returnDate" :"12-09-2022", "departureDate" : "11-09-2022", "destinationCity": "CPT", "dateFlexible":"yes","amadeusReturnUrl":"url","promoCode":"XYZ","userId":"123","corporatePromoCode":"345","corporateName":"Airlink", "corporateId":"234"}
+
+Stage:: {"country":"ZA","language":"EN","product":"LRB","isMobileDevice":"false","tripType":"R","departureCity":"CPT","destinationCity":"KIM","departureDate":"28-09-2022","dateFlexible":"","adultCount":1,"youngAdultCount":0,"childCount":0,"infantCount":0,"cabinClass":0,"amadeusReturnUrl":"","promoCode":"","clientSessionId":"123","returnDate":"31-09-2022"}
+ 
+ increase memory for tomcat
+ -----------------
+ Go to tomcat bin directory:
+
+cd /opt/tomcat8.5/bin
+create new file under bin directory "setenv.sh" and save below mention entries in it.
+
+export CATALINA_OPTS="$CATALINA_OPTS -Xms512m"
+export CATALINA_OPTS="$CATALINA_OPTS -Xmx2048m"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:MaxPermSize=256m"
+and issue command:
+
+./catalina.sh run
+
+Admin App
+---------
+https://stage.flyairlink.com/AirlinkAdmin/
+for Admin user
+user: admin1@flyairlink.com/admin
+Stage DB credentials
+-----------------
+dbc.url = jdbc:mysql://itsairstgsql.c0s77lxielyi.eu-west-1.rds.amazonaws.com:3306/airlinkdatabase
+db - itsairstgsql.c0s77lxielyi.eu-west-1.rds.amazonaws.com
+  itsairprdsql/Hhu+xSmLba
+schema-airlinkdatabase
+port-3306
+Query
+-----
+getRouteConfigEntities.query = select flex_config_name,is_route_operational,is_airlink_route,is_set_direct_trip from airlink_route_config where origin=? and destination=? and product_master_code=?;
+getCityMasterEntities.query = select country_code, city_code, city_description, airport_description from airlink_city_master where city_code = ?;
+
+getConfiguredPOSList.query =select m.city_code,ifnull(lan.city_description,m.`city_description`)city_description, m.`country_code`,if(lan.`localization`='ZH',ifnull(m.`city_description`,lan.`city_description`),ifnull(lan.`city_description`,m.`city_description`)) ORDR,ifnull(lan.`localization`,m.localization) localization from `airlink_pos_city_master` pos,`airlink_city_master` m left join `airlink_city_master_localization` lan on (m.`city_code`=lan.`city_code` and lan.`localization` = ?)  where pos.`city_code`=m.`city_code` and m.country_code=? and pos.`product_master_code`=? and m.`origin_indicator`='Y' order by ORDR,city_description
+
+getERetailVOParameters.query = SELECT master_code,master_description,value FROM airlink_parameter_master WHERE category_number=148;
+getERetailVOParametersWithMasterCode.query = SELECT master_code,master_description,value FROM airlink_parameter_master WHERE category_number=153 AND master_code=?;
+getFlexPricerDetails.query = SELECT * FROM airlink_flex_pricer WHERE flex_config_name=? and route_type=?
+getAmadeusLanguageCode.query=select amadeus_lang_code from airlink_amadeus_language_mapper where master_number in (select master_number from airlink_parameter_master where master_code=?);
+
+getERetailVOParametersWithMasterCode.query = SELECT master_code,master_description,value FROM airlink_parameter_master WHERE category_number=153 AND master_code=?;
+ 
+
+original response
+-----------
+ENC_TIME=20220725071704&COUNTRY_SITE=ZA&EXTERNAL_ID=SESSIONID:fQ+CI11AkS8tCxvLsTfTE/onGYSDNsOVLVCe5s51Nzs=;product:LRB;language:EN;country:ZA;channel:Web&SO_SITE_OFFICE_ID=JNB4Z08AA&BOOKING_FLOW=REVENUE&TRIP_FLOW=YES&SO_SITE_TRUNCATE_NAMES_IN_NM=TRUE&SO_SITE_NM_TRUNC_MODE=TRUNC2&SO_SITE_PROFILE_MAINTENANCE=COOKIES&DIRECT_NON_STOP=true&B_LOCATION_1=JNB&B_DATE_1=202208220000&E_LOCATION_1=CPT&B_LOCATION_2=CPT&B_DATE_2=202208290000&E_LOCATION_2=JNB&TRAVELLER_TYPE_1=ADT&HAS_INFANT_1=FALSE&DATE_RANGE_QUALIFIER_1=C&DATE_RANGE_VALUE_1=3&B_ANY_TIME_1=TRUE&DATE_RANGE_QUALIFIER_2=C&DATE_RANGE_VALUE_2=3&B_ANY_TIME_2=TRUE&TRIP_TYPE=R&COMMERCIAL_FARE_FAMILY_1=DECO2CABV2&ARRANGE_BY=E&PRICING_TYPE=C&DISPLAY_TYPE=2&SO_SITE_MARKET_ID=ZA&SO_SITE_TICKETING_TIME_LIMIT=H24&SO_SITE_EXPORT_CONF_URL=https://www.flyairlink.com/ExportTripPlan/AmadeusTripFlowService&TYPE_OF_CORPORATE_FARE_1=2&IS_PRICE_BY_INPUT_1=TRUE&LIST_CORPORATE_NUMBER_1_1=232323&SO_GL=<?xml version="1.0" encoding="iso-8859-1"?><SO_GL><GLOBAL_LIST mode="complete"><NAME>SO_SINGLE_MULTIPLE_COMMAND_BUILDER</NAME><LIST_ELEMENT><CODE>1</CODE><LIST_VALUE><![CDATA[RM 4Z INTERNET BOOKING]]></LIST_VALUE><LIST_VALUE>S</LIST_VALUE></LIST_ELEMENT><LIST_ELEMENT><CODE>1</CODE><LIST_VALUE><![CDATA[RM SERVER IP ADDRESS - 10.184.234.76]]></LIST_VALUE><LIST_VALUE>S</LIST_VALUE></LIST_ELEMENT></GLOBAL_LIST></SO_GL>
+
+ENC_TIME=20220913044104&COUNTRY_SITE=ZA&EXTERNAL_ID=SESSIONID:wKV2wiGrxuutJ1zN4zY40JfWQcCpg/prGp0OGSbbuZY=;product:LRB;language:EN;country:ZA;channel:Web&SO_SITE_OFFICE_ID=JNB4Z08AA&BOOKING_FLOW=REVENUE&TRIP_FLOW=YES&SO_SITE_TRUNCATE_NAMES_IN_NM=TRUE&SO_SITE_NM_TRUNC_MODE=TRUNC2&SO_SITE_IS_MERCH_TEST_DATA=TRUE&SO_SITE_PROFILE_MAINTENANCE=COOKIES&DIRECT_NON_STOP=false&B_LOCATION_1=CPT&B_DATE_1=202209280000&E_LOCATION_1=KIM&B_LOCATION_2=KIM&B_DATE_2=202209300000&E_LOCATION_2=CPT&TRAVELLER_TYPE_1=ADT&HAS_INFANT_1=FALSE&DATE_RANGE_QUALIFIER_1=C&DATE_RANGE_VALUE_1=3&B_ANY_TIME_1=TRUE&DATE_RANGE_QUALIFIER_2=C&DATE_RANGE_VALUE_2=3&B_ANY_TIME_2=TRUE&TRIP_TYPE=R&COMMERCIAL_FARE_FAMILY_1=DECO2CABV2&ARRANGE_BY=E&PRICING_TYPE=C&DISPLAY_TYPE=2&SO_SITE_MARKET_ID=ZA&SO_SITE_TICKETING_TIME_LIMIT=H24&SO_SITE_EXPORT_CONF_URL=https://stage.flyairlink.com/ExportTripPlan/AmadeusTripFlowService&TYPE_OF_CORPORATE_FARE_1=2&IS_PRICE_BY_INPUT_1=TRUE&LIST_CORPORATE_NUMBER_1_1=232323&SO_GL=&SO_SITE_SI_1AXML_FROM=SEP_JCP&SO_SITE_SI_PASSWORD=UNSET&SO_SITE_SI_SAP=1ASIXJCP&SO_SITE_SI_SERVER_IP=193.23.185.67&SO_SITE_SI_SERVER_PORT=18033&SO_SITE_APIV2_SERVER=194.156.170.78&SO_SITE_APIV2_SERVER_PWD=TAZ&SO_SITE_APIV2_SERVER_USER_ID=GUEST&SO_SITE_CORPORATE_ID=OCGPDT&SO_SITE_MAX_NUM_PNR_PER_CC=99&REFRESH=0&SO_SITE_EXTERNAL_ID=TRUE&SO_SITE_EXTERNAL_ID_LIMIT=99&SO_SITE_FP_TRACES_ON=FALSE&SO_SITE_FQ_INTERFACE_ACTIVE=FALSE&SO_SITE_HOST_TRACE_ACTIVE=TRUE&SO_SITE_SI_USER=UNSET   
+
+local flightSearch response
+----------------------
+
+success request- 
+
+http://localhost:9091/BookingEngine/homepage/home.html?Origin2=JNB&Origin1=CPT&DepartureDate1=2022-09-28&Infant=0&Destination2=CPT&Destination1=KIM&Cabin1=Economy&ReferralId=EveryMundo&TripType=RoundTrip&DepartureDate2=2022-10-05&Adult=1&UserLanguage=EN&Child=0
+
+
+success round tripType
+--------------------
+{"country":"ZA","language":"EN","product":"LRB","isMobileDevice":"false","tripType":"R","departureCity":"CPT","destinationCity":"JNB","departureDate":"23-09-2022","dateFlexible":"","adultCount":1,"youngAdultCount":0,"childCount":0,"infantCount":0,"cabinClass":0,"amadeusReturnUrl":"","promoCode":"","clientSessionId":"123","returnDate":"28-09-2022"}
+
+https://wav-digital-4.saas.amadeus.com/plnext/Airlink/Override.action?SITE=false&LANGUAGE=GB&EMBEDDED_TRANSACTION=false--COUNTRY_SITE=ZA&EXTERNAL_ID=SESSIONID:tyWVDBIvFyeYz3RU6y/LptRTw2OvKXUCboyUyUpLqr4=;product:LRB;language:EN;country:ZA;channel:Web&SO_SITE_OFFICE_ID=JNB4Z08AA&BOOKING_FLOW=REVENUE&TRIP_FLOW=YES&SO_SITE_TRUNCATE_NAMES_IN_NM=TRUE&SO_SITE_NM_TRUNC_MODE=TRUNC2&SO_SITE_IS_MERCH_TEST_DATA=TRUE&SO_SITE_PROFILE_MAINTENANCE=COOKIES&DIRECT_NON_STOP=false&B_LOCATION_1=JNB&B_DATE_1=202208260000&E_LOCATION_1=CPT&B_LOCATION_2=CPT&B_DATE_2=202208310000&E_LOCATION_2=JNB&TRAVELLER_TYPE_1=ADT&HAS_INFANT_1=FALSE&DATE_RANGE_QUALIFIER_1=C&DATE_RANGE_VALUE_1=7&B_ANY_TIME_1=TRUE&DATE_RANGE_QUALIFIER_2=NULL&DATE_RANGE_VALUE_2=7&B_ANY_TIME_2=TRUE&TRIP_TYPE=R&COMMERCIAL_FARE_FAMILY_1=DECO2CAB&ARRANGE_BY=D&PRICING_TYPE=C&DISPLAY_TYPE=1&SO_SITE_MARKET_ID=ZA&SO_SITE_EXPORT_CONF_URL=https://stage.flyairlink.com/ExportTripPlan/AmadeusTripFlowService&&TYPE_OF_CORPORATE_FARE_1=2&IS_PRICE_BY_INPUT_1=TRUE&LIST_CORPORATE_NUMBER_1_1=232323&SO_GL=<?xml version="1.0" encoding="iso-8859-1"?><SO_GL><GLOBAL_LIST mode="complete"><NAME>SO_SINGLE_MULTIPLE_COMMAND_BUILDER</NAME><LIST_ELEMENT><CODE>1</CODE><LIST_VALUE><![CDATA[RM 4Z INTERNET BOOKING]]></LIST_VALUE><LIST_VALUE>S</LIST_VALUE></LIST_ELEMENT><LIST_ELEMENT><CODE>1</CODE><LIST_VALUE><![CDATA[RM SERVER IP ADDRESS - 192.168.1.13]]></LIST_VALUE><LIST_VALUE>S</LIST_VALUE></LIST_ELEMENT></GLOBAL_LIST></SO_GL>&SO_SITE_SI_1AXML_FROM=SEP_JCP&SO_SITE_SI_PASSWORD=UNSET&SO_SITE_SI_SAP=1ASIXJCP&SO_SITE_SI_SERVER_IP=193.23.185.67&SO_SITE_SI_SERVER_PORT=18033&SO_SITE_APIV2_SERVER=194.156.170.78&SO_SITE_APIV2_SERVER_PWD=TAZ&SO_SITE_APIV2_SERVER_USER_ID=GUEST&SO_SITE_CORPORATE_ID=OCGPDT&SO_SITE_MAX_NUM_PNR_PER_CC=99&REFRESH=0&SO_SITE_EXTERNAL_ID=TRUE&SO_SITE_EXTERNAL_ID_LIMIT=99&SO_SITE_FP_TRACES_ON=FALSE&SO_SITE_FQ_INTERFACE_ACTIVE=FALSE&SO_SITE_HOST_TRACE_ACTIVE=TRUE&SO_SITE_SI_USER=UNSET
+
+https://wav-digital-4.saas.amadeus.com/plnext/Airlink/Override.action?SITE=false&LANGUAGE=null&EMBEDDED_TRANSACTION=false&ENCT=1&ENC=7E676B3975EC21A6B6FB483FA7EDAA7494136F18E75E0C7CCD37D69B183774C512E85C5EB1A78CAE35353C680A83346C048DA12104171A9C8EC0E2725585FF89A2EFEC5FE0D0605C99F5B19B19AA157A89BFF65E5B0DCEE12DD15788D620A1450E52C6D0561DDC682B7783A082F4430DBE81C3610B3999063EDC91EC8111E73AD4C8D0B5701F6FBD3EFC973C0CAFD3FE2DD313A0409C2604356F326912982D37CCDD9EB93B007C7053792E4C20977270C56CBB6DDD5E075CAD7EE29B98F70D4EB06FFFF6CF31E816250A8C8DF1E5206384D890C90FDC67623A9D0AF8114B74BF15DF39C9C57EFFDC6C7BD6586DE799D95A8DE1C560DBCDABB4C76714766481C194387088B009CE3D14CA8AFC7B50334243F5235EF40166E384B601F2D2B424A1971CBDE35EB40430B56BFEF27259050780CFBDA23FD3804543991B34F5B66990B98A8BC6D1946192FAA20E9B8C38D5B3C8BFC9BF69F4961DD1D549CB3C9A540900F391117FAD0DCFA52E00C5B5049F153DAFFD5DAA5918E8E3995F8EAF0E6F3923CE30378719CFF36210B212FEBF171790459244EE9B5BD288D6405418FAEE1E430CB9F032B477D6AD671F7882EDB39FC14C656004B99B51B83C1688EF09223997216D7233AC9B25D81FB317D72FFFC6FF710D5BAA58B9F66C321D2E81877FFF0B6FCED134E3AA66B6198702DE4A1F01
+
+From normal bookingEngine response
+null?SITE=P02LP02L&LANGUAGE=GB&EMBEDDED_TRANSACTION=FlexPricerAvailability&COUNTRY_SITE=ZA&EXTERNAL_ID=SESSIONID:Z7ItM3VuXtx0fcj+tpRxmfKXyVQMIqKzfemnRs4kzMk=;product:LRB;language:EN;country:ZA;channel:Web&SO_SITE_OFFICE_ID=JNB4Z08AA&BOOKING_FLOW=null&TRIP_FLOW=YES&SO_SITE_TRUNCATE_NAMES_IN_NM=TRUE&SO_SITE_NM_TRUNC_MODE=TRUNC2&SO_SITE_IS_MERCH_TEST_DATA=null&SO_SITE_PROFILE_MAINTENANCE=null&DIRECT_NON_STOP=false&B_LOCATION_1=JNB&B_DATE_1=202208260000&E_LOCATION_1=CPT&B_LOCATION_2=CPT&B_DATE_2=202208310000&E_LOCATION_2=JNB&TRAVELLER_TYPE_1=ADT&HAS_INFANT_1=FALSE&DATE_RANGE_QUALIFIER_1=C&DATE_RANGE_VALUE_1=3&B_ANY_TIME_1=TRUE&DATE_RANGE_QUALIFIER_2=C&DATE_RANGE_VALUE_2=3&B_ANY_TIME_2=TRUE&TRIP_TYPE=R&COMMERCIAL_FARE_FAMILY_1=DECO2CABV2&ARRANGE_BY=E&PRICING_TYPE=C&DISPLAY_TYPE=2&SO_SITE_MARKET_ID=ZA&SO_SITE_TICKETING_TIME_LIMIT=null&SO_SITE_EXPORT_CONF_URL=null&TYPE_OF_CORPORATE_FARE_1=null&IS_PRICE_BY_INPUT_1=TRUE&LIST_CORPORATE_NUMBER_1_1=232323&SO_SITE_SI_1AXML_FROM=null&SO_SITE_SI_PASSWORD=null&SO_SITE_SI_SAP=null&SO_SITE_SI_SERVER_IP=null&SO_SITE_SI_SERVER_PORT=null&SO_SITE_APIV2_SERVER=null&SO_SITE_APIV2_SERVER_PWD=null&SO_SITE_APIV2_SERVER_USER_ID=null&SO_SITE_CORPORATE_ID=null&SO_SITE_MAX_NUM_PNR_PER_CC=null
+
+
+ Testing
+ --------
+ 
+OneWay 
+https://10.130.212.10:9443/BookingEngine/homepage/home.html?Origin2=JNB&Origin1=HRE&DepartureDate1=2022-11-28&Infant=0&Destination2=CPT&Destination1=KIM&Cabin1=Economy&ReferralId=EveryMundo&TripType=OneWay&DepartureDate2=2022-12-05&Adult=1&UserLanguage=EN&Child=0
+
+PromoCode
+https://10.130.212.10:9443/BookingEngine/homepage/home.html?Adult=1&Child=0&Infant=0&UserLanguage=EN&TripType=OneWay&Cabin1=Economy&DepartureDate1=2022-11-20&Origin1=HRE&Destination1=JNB&ReferralId=EveryMundo&PromoCode=EMPROMO
+
+MultiCity
+https://10.130.212.10:9443/BookingEngine/homepage/home.html?Origin2=JNB&Origin1=CPT&DepartureDate1=2022-11-28&Infant=0&Destination2=CPT&Destination1=KIM&Cabin1=Economy&ReferralId=EveryMundo&TripType=MultiCity&DepartureDate2=2022-12-05&Adult=1&UserLanguage=EN&Child=0
+
+RoundTrip
+https://10.130.212.10:9443/BookingEngine/homepage/home.html?Origin2=JNB&Origin1=CPT&DepartureDate1=2022-11-28&Infant=0&Destination2=CPT&Destination1=KIM&Cabin1=Economy&ReferralId=EveryMundo&TripType=RoundTrip&DepartureDate2=2022-12-05&Adult=1&UserLanguage=EN&Child=0
+
+for staging
+-----------
+  curl  'http://localhost:8080/BookingEngine/flightSearch/' --header 'Content-Type: application/json'    --data '{"country":"ZA","language":"EN","product":"LRB","isMobileDevice":"false","tripType":"R","departureCity":"CPT","destinationCity":"JNB","departureDate":"28-09-2022","dateFlexible":"","adultCount":1,"youngAdultCount":0,"childCount":0,"infantCount":0,"cabinClass":0,"amadeusReturnUrl":"","promoCode":"","clientSessionId":"123","returnDate":"05-10-2022"}'
+ 
+WSO2 tomcat path
+----------------
+/projects/airlink/wso2ei-6.1.5/conf/tomcat

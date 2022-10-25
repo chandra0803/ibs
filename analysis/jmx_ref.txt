@@ -1,0 +1,241 @@
+WSO2 Servers
+**************
+10.130.212.10 - Stage
+10.130.212.4 - Production
+10.130.212.3 - Production
+USERNAME: ibsuser
+PASSWORD: #!bsu$er#123
+Username:root Pass: #Local#123
+ssh root@10.130.212.10  / 	 #Local#123
+ssh ibsuser@10.130.212.10 / 	#!bsu$er#123
+
+cd /projects/airlink/wso2ei-6.1.5/bin
+ping $(hostname)
+
+nginx4
+------
+Username:root Pass: #Local#123
+ssh root@10.130.212.10 
+cd /projects/airlink/nginx/ 
+ps -ef | grep nginx
+
+for stop => after grep, kill worker and master processid 
+for start=> 
+sudo ./nginx
+  inet 172.26.124.2  netmask 255.255.255.248  broadcast 172.26.124.7
+
+port
+-----
+netstat -tulpn
+
+ Tomcat
+-------
+ <jmx:open
+    host="localhost"
+    port="8686"
+  />
+  
+export DISPLAY=:0
+export DISPLAY=127.0.0.1:10.0
+export DISPLAY=localhost:0.0
+export DISPLAY=10.130.212.10:0.0
+export DISPLAY=<10.130.212.10:10.0
+ /opt/jdk1.8.0_201/bin/jconsole
+jconsole service:jmx:rmi://10.130.##.###:8084/jndi/rmi://10.130.##.###:8686/jmxrmi
+
+jconsole service:jmx:rmi://10.130.212.10:8685/jndi/rmi://10.130.212.10:8686/jmxrmi
+ xterm &
+  172.26.124.2 
+  putty.exe -ssh ibsuser@10.130.212.10 -L 8686:10.130.212.10:8686
+  jconsole localhost:8686
+   
+Step-1
+create a java file like below.
+public class JmxTest {
+	 
+	public static void main(String args[]){
+		 while (true) {
+            	System.out.println("JMX Connecting ...");
+        }
+	
+	}
+
+}
+Step-2
+  Login into remote system (at 10.130.212.10 (WSO2 server) 
+copy paste JmxTest.java  and compile and run JmxTest in remote system. you can see   "JMX Connecting ..." continus statement in console.
+Step-3
+Then enter following commands in another remote session.
+  java -Dcom.sun.management.jmxremote  -Dcom.sun.management.jmxremote.port=8685  -Dcom.sun.management.jmxremote.rmi.port=8685 -Dcom.sun.management.jmxremote.ssl=false  -Dcom.sun.management.jmxremote.authenticate=false   -Dcom.sun.management.jmxremote.local.only=false   -Djava.rmi.server.hostname=localhost   JmxTest
+Step-4
+   from local system command prompt enter following
+  putty.exe -ssh -L 8685:localhost:8685 ibsuser@10.130.212.10
+  enter password
+Step-5
+	same command prompt 
+	enter jconsole 
+	At jconsole select remote
+	then enter locahost:8685
+
+   
+ C:\chandra\wso2_workspace\JMXMonitoring\bin\com\ibsplc\jmx\JMXMonitoring\JmxTest.class
+ 
+ java -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8686 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false  /projects/airlink/apache-tomcat-9.0.30/webapps/JMXMonitoring.jar 
+ 
+ java -Dcom.sun.management.jmxremote.port=8686 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=10.130.212.10
+ 
+ 
+JMXServiceURL url = new JMXServiceURL("service:jmx:rmi:///jndi/rmi://localhost:8686/jmxrmi");
+JMXConnector jmxc = JMXConnectorFactory.connect(url, null);
+
+WSO2 setup
+----------
+in  <WSO2HOME>/conf/carbon.xml add following entries
+
+  <JMX>
+            <!--The port RMI registry is exposed-->
+            <RMIRegistryPort>9999</RMIRegistryPort>
+            <!--The port RMI server should be exposed-->
+            <RMIServerPort>11111</RMIServerPort>
+        </JMX>
+<JMX xmlns="http://wso2.org/projects/carbon/jmx.xml">
+    <StartRMIServer>true</StartRMIServer>
+    <!-- HostName, or Network interface to which this RMI server should be bound -->
+    <HostName>localhost</HostName>
+    <!--  ${Ports.JMX.RMIRegistryPort} is defined in the Ports section of the carbon.xml-->
+    <RMIRegistryPort>${Ports.JMX.RMIRegistryPort}</RMIRegistryPort>
+    <!--  ${Ports.JMX.RMIRegistryPort} is defined in the Ports section of the carbon.xml-->
+    <RMIServerPort>${Ports.JMX.RMIServerPort}</RMIServerPort>
+</JMX>
+        <!-- Embedded LDAP server specific ports -->
+        <EmbeddedLDAP>
+            <!-- Port which embedded LDAP server runs -->
+            <LDAPServerPort>10389</LDAPServerPort>
+            <!-- Port which KDC (Kerberos Key Distribution Center) server runs -->
+            <KDCServerPort>8000</KDCServerPort>
+        </EmbeddedLDAP>
+	
+	<!-- 
+             Override datasources JNDIproviderPort defined in bps.xml and datasources.properties files
+	-->
+	<datasource>
+            <name>WSO2_CARBON_DB</name>
+            <description>The datasource used for registry and user manager</description>
+            <jndiConfig>
+                <name>jdbc/WSO2CarbonDB</name>
+            </jndiConfig>
+            <definition type="RDBMS">
+                <configuration>
+                    <url>jdbc:h2:./repository/database/WSO2CARBON_DB;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=60000</url>
+                    <username>wso2carbon</username>
+                    <password>wso2carbon</password>
+                    <driverClassName>org.h2.Driver</driverClassName>
+                    <maxActive>50</maxActive>
+                    <maxWait>60000</maxWait>
+                    <testOnBorrow>true</testOnBorrow>
+                    <validationQuery>SELECT 1</validationQuery>
+                    <validationInterval>30000</validationInterval>
+                    <defaultAutoCommit>false</defaultAutoCommit>
+                    <jmxEnabled>true</jmxEnabled>
+                </configuration>
+            </definition>
+        </datasource>
+		
+Start jConsole
+open command prompt . type jConsole
+In Remote process enter following entries:
+service:jmx:rmi://localhost:11111/jndi/rmi://localhost:9999/jmxrmi
+credentials - admin/admin
+
+   
+Step-1
+create a java file like below.
+public class JmxTest {
+	 
+	public static void main(String args[]){
+		 while (true) {
+            	System.out.println("JMX Connecting ...");
+        }
+	
+	}
+
+}
+Step-2
+  Login into remote system (at 10.130.212.10 (WSO2 server) 
+copy paste JmxTest.java  and compile and run JmxTest in remote system. you can see   "JMX Connecting ..." continus statement in console.
+Step-3
+Not needed as we have already configured in WSO2 conf file as datasource
+Then enter following commands in another remote session.
+  java -Dcom.sun.management.jmxremote  -Dcom.sun.management.jmxremote.port=11111  -Dcom.sun.management.jmxremote.rmi.port=11111 -Dcom.sun.management.jmxremote.ssl=false  -Dcom.sun.management.jmxremote.authenticate=false   -Dcom.sun.management.jmxremote.local.only=false   -Djava.rmi.server.hostname=localhost   JmxTest
+  
+   java -Dcom.sun.management.jmxremote  -Dcom.sun.management.jmxremote.port=9999  -Dcom.sun.management.jmxremote.rmi.port=9999 -Dcom.sun.management.jmxremote.ssl=false  -Dcom.sun.management.jmxremote.authenticate=false   -Dcom.sun.management.jmxremote.local.only=false   -Djava.rmi.server.hostname=localhost   JmxTest
+  
+   192.168.1.10
+Step-4
+   from local system command prompt enter following
+   putty.exe -ssh ibsuser@10.130.212.10 -L 9999:10.130.212.10:9999
+   
+    putty.exe -ssh -L 9999:localhost:9999 ibsuser@10.130.212.10
+    putty.exe -ssh -L 11111:localhost:11111 ibsuser@10.130.212.10
+	 putty.exe -ssh -L 9999:localhost:11111 ibsuser@10.130.212.10
+ putty.exe -ssh -L 11111:localhost:9999 ibsuser@10.130.212.10
+ 
+    putty.exe -ssh -L 9999:localhost:9999 ibsuser@172.26.124.2
+  enter password #!bsu$er#123
+Step-5
+	same command prompt 
+	enter jconsole 
+	At jconsole select remote
+	then enter localhost:11111
+	localhost:9999
+	10.130.212.10:9999
+	10.130.212.10:11111
+	172.26.124.2:9999
+	enter wso2carbon/wso2carbon as username and password
+ or
+ service:jmx:rmi://localhost:11111/jndi/rmi://localhost:9999/jmxrmi
+ service:jmx:rmi://localhost:9999/jndi/rmi://localhost:11111/jmxrmi
+ 
+  Mgt Console URL  : https://172.26.124.2:9443/carbon/
+  
+  in bin/integrator.sh 
+ -Dcom.sun.management.jmxremote.host="10.130.212.10" \ 
+ -Djava.rmi.server.hostname="10.130.212.10" \
+ -Djava.rmi.server.hostname="172.26.124.2" \
+  service:jmx:rmi://10.130.212.10:11111/jndi/rmi://10.130.212.10:9999/jmxrmi
+  service:jmx:rmi://10.130.212.10:9999/jndi/rmi://10.130.212.10:11111/jmxrmi
+  service:jmx:rmi://172.26.124.2:9999/jndi/rmi://172.26.124.2:11111/jmxrmi
+  
+  172.26.124.2
+    172.26.124.2
+  -bash-4.2$ ping $(hostname)
+PING ALKUATWS02 (172.26.124.2) 56(84) bytes of data.
+64 bytes from ALKUATWS02 (172.26.124.2): icmp_seq=1 ttl=64 time=0.034 ms
+64 bytes from ALKUATWS02 (172.26.124.2): icmp_seq=2 ttl=64 time=0.049 ms
+64 bytes from ALKUATWS02 (172.26.124.2): icmp_seq=3 ttl=64 time=0.057 ms
+64 bytes from ALKUATWS02 (172.26.124.2): icmp_seq=4 ttl=64 time=0.048 ms
+64 bytes from ALKUATWS02 (172.26.124.2): icmp_seq=5 ttl=64 time=0.052 ms
+^C
+-Dcom.sun.management.jmxremote.port=1616
+-Dcom.sun.management.jmxremote.rmi.port=1616
+-Dcom.sun.management.jmxremote.ssl=false
+-Dcom.sun.management.jmxremote.authenticate=false
+-Dcom.sun.management.jmxremote.local.only=false
+-Djava.rmi.server.hostname=localhost
+
+etc/hosts file
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+ALKUATWS02 ALKUATWS02.localdomain
+
+
+
+  022-10-17 13:06:20,182] [-1234] [] [localhost-startStop-1]  INFO {org.wso2.carbon.mediation.ntask.NTaskTaskManager} -  Scheduled task [NTask::-1234::ZuluTransferFile-FILE--SYNAPSE_INBOUND_ENDPOINT]
+[2022-10-17 13:06:20,199] [-1234] [] [localhost-startStop-1]  INFO {org.wso2.carbon.mediation.ntask.NTaskTaskManager} -  Scheduled task [NTask::-1234::iFlightFileScheduler]
+[2022-10-17 13:06:20,213] [-1234] [] [localhost-startStop-1]  INFO {org.wso2.carbon.mediation.ntask.NTaskTaskManager} -  Scheduled task [NTask::-1234::IFlightLiteTransferFile-FILE--SYNAPSE_INBOUND_ENDPOINT]
+[2022-10-17 13:06:20,262] [-1234] [] [localhost-startStop-1]  INFO {org.wso2.carbon.core.init.JMXServerManager} -  JMX Service URL  : 
+service:jmx:rmi://localhost:11111/jndi/rmi://localhost:9999/jmxrmi
+[2022-10-17 13:06:20,312] [-1234] [] [localhost-startStop-1]  INFO {org.wso2.carbon.ntask.core.impl.AbstractQuartzTaskManager} -  Task scheduled: [-1234][ESB_TASK][SitatexTransferFile-FILE--SYNAPSE_INBOUND_ENDPOINT]
+[2022-10-17 13:06:20,314] [-1234] [] [localhost-startStop-1]  INFO {org.wso2.carbon.ntask.core.impl.AbstractQuartzTaskManager} -  Task scheduled: [-1234][ESB_TASK][ZuluTransferFile-FILE--SYNAPSE_INBOUND_ENDPOINT]
+[2022-10-17 13:06:20,324] [-1234] [] [localhost-startStop-1]  INFO {org.wso2.carbon.ntask.core.impl.AbstractQuartzTaskManager} -  Task scheduled: [-1234][ESB_TASK][iFlightFileScheduler]
+[20
